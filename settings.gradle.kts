@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Android MVVM Kotlin Template"
-include ':app'
+
+rootProject.name = "Tapptitude Template"
+
+include(":app")
