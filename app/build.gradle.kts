@@ -1,3 +1,7 @@
+import dependencies.Dependencies
+import dependencies.extensions.addAndroidAndTestDependencies
+import configuration.Android
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,16 +9,21 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Android.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = "com.tapptitude.template"
-        minSdk = 23
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Android.APPLICATION_ID
+        minSdk = Android.MIN_SDK_VERSION
+        targetSdk = Android.TARGET_SDK_VERSION
+        versionCode = Android.VERSION_CODE
+        versionName = Android.VERSION_NAME
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = Android.TEST_RUNNER
+    }
+
+    buildFeatures {
+        viewBinding = Android.VIEW_BINDING_ENABLED
+        dataBinding = Android.DATA_BINDING_ENABLED
     }
 
     buildTypes {
@@ -35,10 +44,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation(Dependencies.ANDROIDX_CORE_KTX)
+    implementation(Dependencies.ANDROIDX_APP_COMPAT)
+    implementation(Dependencies.GOOGLE_MATERIAL)
+
+    addAndroidAndTestDependencies()
 }
