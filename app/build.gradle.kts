@@ -1,6 +1,4 @@
-import dependencies.Dependencies
-import dependencies.extensions.addAndroidAndTestDependencies
-import configuration.Android
+import library.extension.addAndroidAndTestDependencies
 
 plugins {
     id("com.android.application")
@@ -9,21 +7,21 @@ plugins {
 }
 
 android {
-    compileSdk = Android.COMPILE_SDK_VERSION
+    compileSdk = configuration.Android.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = Android.APPLICATION_ID
-        minSdk = Android.MIN_SDK_VERSION
-        targetSdk = Android.TARGET_SDK_VERSION
-        versionCode = Android.VERSION_CODE
-        versionName = Android.VERSION_NAME
+        applicationId = configuration.Android.APPLICATION_ID
+        minSdk = configuration.Android.MIN_SDK_VERSION
+        targetSdk = configuration.Android.TARGET_SDK_VERSION
+        versionCode = configuration.Android.VERSION_CODE
+        versionName = configuration.Android.VERSION_NAME
 
-        testInstrumentationRunner = Android.TEST_RUNNER
+        testInstrumentationRunner = configuration.Android.TEST_RUNNER
     }
 
     buildFeatures {
-        viewBinding = Android.VIEW_BINDING_ENABLED
-        dataBinding = Android.DATA_BINDING_ENABLED
+        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
+        dataBinding = configuration.Android.DATA_BINDING_ENABLED
     }
 
     buildTypes {
@@ -34,19 +32,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+        targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = configuration.Android.KOTLIN_LANGUAGE_LEVEL
     }
 }
 
 dependencies {
-    implementation(Dependencies.ANDROIDX_CORE_KTX)
-    implementation(Dependencies.ANDROIDX_APP_COMPAT)
-    implementation(Dependencies.GOOGLE_MATERIAL)
+    implementation(library.Dependencies.ANDROIDX_CORE_KTX)
+    implementation(library.Dependencies.ANDROIDX_APP_COMPAT)
+    implementation(library.Dependencies.GOOGLE_MATERIAL)
 
     addAndroidAndTestDependencies()
 }

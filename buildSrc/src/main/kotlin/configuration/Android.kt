@@ -1,5 +1,7 @@
 package configuration
 
+import org.gradle.api.JavaVersion
+
 object Android {
     const val APPLICATION_ID = "com.tapptitude.template"
 
@@ -14,4 +16,7 @@ object Android {
 
     const val VIEW_BINDING_ENABLED = true
     const val DATA_BINDING_ENABLED = false
+
+    const val KOTLIN_LANGUAGE_LEVEL = "1.8"
+    val JAVA_LANGUAGE_LEVEL = JavaVersion.VERSION_1_8
 }
