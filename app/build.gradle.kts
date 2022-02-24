@@ -42,9 +42,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":network"))
+
     implementation(library.Dependencies.ANDROIDX_CORE_KTX)
     implementation(library.Dependencies.ANDROIDX_APP_COMPAT)
     implementation(library.Dependencies.GOOGLE_MATERIAL)
+    implementation(library.Dependencies.KOIN_ANDROID)
+    implementation(library.Dependencies.KOIN_CORE)
 
     addAndroidAndTestDependencies()
 }
