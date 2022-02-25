@@ -18,6 +18,8 @@ object Dependencies {
     const val MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI}"
     const val MOSHI_KAPT = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}"
 
+    const val KOTLINX_COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES}"
+
     object Versions {
         const val ANDROIDX_CORE_KTX = "1.7.0"
         const val ANDROIDX_APP_COMPAT = "1.4.1"
@@ -28,5 +30,6 @@ object Dependencies {
         const val KOIN = "3.1.5"
         const val RETROFIT = "2.9.0"
         const val MOSHI = "1.13.0"
+        const val KOTLINX_COROUTINES = "1.6.0"
     }
 }

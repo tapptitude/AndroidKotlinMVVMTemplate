@@ -1,8 +1,9 @@
 package com.tapptitude.network.api
 
+import com.tapptitude.network.dto.ImageDto
 import retrofit2.http.GET
 
 interface SampleApi {
-    @GET("/some/really/cool/api")
-    fun getThisCoolStuff()
+    @GET("api/")
+    fun getRandomImage(): ImageDto
 }

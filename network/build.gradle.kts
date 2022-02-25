@@ -38,5 +38,6 @@ dependencies {
     implementation(library.Dependencies.KOIN_CORE)
     implementation(library.Dependencies.KOIN_ANDROID)
     implementation(library.Dependencies.MOSHI)
+    implementation(library.Dependencies.KOTLINX_COROUTINES)
     kapt(library.Dependencies.MOSHI_KAPT)
 }
