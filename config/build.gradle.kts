@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
+
 apply<plugin.AddFlavorsPlugin>()
 
 android {
@@ -21,7 +22,7 @@ android {
     }
 
     productFlavors {
-        plugin.FlavorsEnum.values().forEach { flavorData ->
+        configuration.FlavorsEnum.values().forEach { flavorData ->
             getByName(flavorData.flavorName) {
                 buildConfigField("String", "BASE_URL", "\"${flavorData.baseUrl}\"")
             }

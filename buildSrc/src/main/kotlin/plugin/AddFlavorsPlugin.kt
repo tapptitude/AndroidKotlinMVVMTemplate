@@ -3,6 +3,8 @@ package plugin
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.ProductFlavor
+import configuration.DIMENSIONS_LIST
+import configuration.FlavorsEnum
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -13,30 +15,19 @@ abstract class AddFlavorsPlugin : Plugin<Project> {
         val libraryExtension = project.extensions.findByType(LibraryExtension::class.java)
 
         if (libraryExtension != null) {
-            libraryExtension.setFlavorDimensions(listOf(DIMENSION_API))
+            libraryExtension.setFlavorDimensions(DIMENSIONS_LIST)
             configureFlavors(libraryExtension.productFlavors)
         } else if (appExtension != null) {
-            appExtension.flavorDimensions(DIMENSION_API)
+            appExtension.flavorDimensions(*DIMENSIONS_LIST.toTypedArray())
             configureFlavors(appExtension.productFlavors)
         }
     }
 
     private fun configureFlavors(productFlavorsContainer: NamedDomainObjectContainer<ProductFlavor>) {
-        FlavorsEnum.values().forEach {
-            productFlavorsContainer.create(it.flavorName)
+        FlavorsEnum.values().forEach { flavorData ->
+            productFlavorsContainer.create(flavorData.flavorName) {
+                dimension = flavorData.flavorDimension
+            }
         }
     }
 }
-
-enum class FlavorsEnum(val flavorName: String, val baseUrl: String) {
-    PRODUCTION(
-        flavorName = "production",
-        baseUrl = "https://www.tapptitude.com/"
-    ),
-    DEV(
-        flavorName = "dev",
-        baseUrl = "https://dev.tapptitude.com/"
-    )
-}
-
-private const val DIMENSION_API = "api"
