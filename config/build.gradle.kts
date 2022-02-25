@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
+apply<plugin.AddFlavorsPlugin>()
 
 android {
     compileSdk = configuration.Android.COMPILE_SDK_VERSION
@@ -14,11 +15,17 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    flavorDimensions += listOf("api")
-
     compileOptions {
         sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
         targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+    }
+
+    productFlavors {
+        plugin.FlavorsEnum.values().forEach { flavorData ->
+            getByName(flavorData.flavorName) {
+                buildConfigField("String", "BASE_URL", "\"${flavorData.baseUrl}\"")
+            }
+        }
     }
 
     kotlinOptions {

@@ -6,6 +6,8 @@ plugins {
     kotlin("kapt")
 }
 
+apply<plugin.AddFlavorsPlugin>()
+
 android {
     compileSdk = configuration.Android.COMPILE_SDK_VERSION
 
