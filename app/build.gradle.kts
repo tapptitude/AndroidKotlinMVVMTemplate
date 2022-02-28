@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":network"))
+    api(project(":featureHome"))
 
     implementation(library.Dependencies.ANDROIDX_CORE_KTX)
     implementation(library.Dependencies.ANDROIDX_APP_COMPAT)

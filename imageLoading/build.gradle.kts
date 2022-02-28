@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 apply<plugin.AddFlavorsPlugin>()
@@ -16,11 +17,6 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildFeatures {
-        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
-        dataBinding = configuration.Android.DATA_BINDING_ENABLED
-    }
-
     compileOptions {
         sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
         targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
@@ -32,15 +28,7 @@ android {
 }
 
 dependencies {
-    api(project(":config"))
-    api(project(":network"))
-    api(project(":imageLoading"))
-
-    implementation(library.Dependencies.ANDROIDX_CORE_KTX)
-    implementation(library.Dependencies.ANDROIDX_LIFECYCLE_COMMON)
-
-    implementation(library.Dependencies.KOIN_CORE)
     implementation(library.Dependencies.KOIN_ANDROID)
-
-    implementation(library.Dependencies.KOTLINX_COROUTINES)
+    implementation(library.Dependencies.GLIDE)
+    kapt(library.Dependencies.GLIDE_KAPT)
 }

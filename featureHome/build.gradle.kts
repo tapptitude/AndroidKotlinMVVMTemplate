@@ -1,3 +1,5 @@
+import library.extension.addAndroidAndTestDependencies
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -32,15 +34,18 @@ android {
 }
 
 dependencies {
-    api(project(":config"))
-    api(project(":network"))
+    api(project(":core"))
     api(project(":imageLoading"))
 
     implementation(library.Dependencies.ANDROIDX_CORE_KTX)
+    implementation(library.Dependencies.ANDROIDX_APP_COMPAT)
+    implementation(library.Dependencies.ANDROIDX_CONSTRAINT_LAYOUT)
+    implementation(library.Dependencies.ANDROIDX_LIFECYCLE_VIEWMODEL)
+    implementation(library.Dependencies.ANDROIDX_LIFECYCLE_LIVEDATA)
     implementation(library.Dependencies.ANDROIDX_LIFECYCLE_COMMON)
 
-    implementation(library.Dependencies.KOIN_CORE)
     implementation(library.Dependencies.KOIN_ANDROID)
+    implementation(library.Dependencies.KOIN_CORE)
 
-    implementation(library.Dependencies.KOTLINX_COROUTINES)
+    addAndroidAndTestDependencies()
 }

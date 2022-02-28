@@ -3,7 +3,7 @@ package com.tapptitude.network.api
 import com.tapptitude.network.dto.ImageDto
 import retrofit2.http.GET
 
-interface SampleApi {
+interface ImageApi {
     @GET("api/")
-    fun getRandomImage(): ImageDto
+    suspend fun getRandomImage(): ImageDto
 }

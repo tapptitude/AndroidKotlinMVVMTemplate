@@ -3,6 +3,14 @@ package library
 object Dependencies {
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.ANDROIDX_CORE_KTX}"
     const val ANDROIDX_APP_COMPAT = "androidx.appcompat:appcompat:${Versions.ANDROIDX_APP_COMPAT}"
+    const val ANDROIDX_CONSTRAINT_LAYOUT =
+        "androidx.constraintlayout:constraintlayout:${Versions.ANDROIDX_CONSTRAINT_LAYOUT}"
+    const val ANDROIDX_LIFECYCLE_VIEWMODEL =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.ANDROIDX_LIFECYCLE}"
+    const val ANDROIDX_LIFECYCLE_LIVEDATA =
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.ANDROIDX_LIFECYCLE}"
+    const val ANDROIDX_LIFECYCLE_COMMON =
+        "androidx.lifecycle:lifecycle-common-java8:${Versions.ANDROIDX_LIFECYCLE}"
 
     const val GOOGLE_MATERIAL = "com.google.android.material:material:${Versions.GOOGLE_MATERIAL}"
 
@@ -20,9 +28,14 @@ object Dependencies {
 
     const val KOTLINX_COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES}"
 
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_KAPT = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+
     object Versions {
         const val ANDROIDX_CORE_KTX = "1.7.0"
         const val ANDROIDX_APP_COMPAT = "1.4.1"
+        const val ANDROIDX_CONSTRAINT_LAYOUT = "2.1.3"
+        const val ANDROIDX_LIFECYCLE = "2.4.1"
 
         const val GOOGLE_MATERIAL = "1.5.0"
 
@@ -31,5 +44,6 @@ object Dependencies {
         const val RETROFIT = "2.9.0"
         const val MOSHI = "1.13.0"
         const val KOTLINX_COROUTINES = "1.6.0"
+        const val GLIDE = "4.13.0"
     }
 }
