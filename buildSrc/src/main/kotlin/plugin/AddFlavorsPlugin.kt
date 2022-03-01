@@ -3,7 +3,7 @@ package plugin
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.ProductFlavor
-import configuration.DIMENSIONS_LIST
+import configuration.DimensionsEnum
 import configuration.FlavorsEnum
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Plugin
@@ -14,11 +14,13 @@ abstract class AddFlavorsPlugin : Plugin<Project> {
         val appExtension = project.extensions.findByType(AppExtension::class.java)
         val libraryExtension = project.extensions.findByType(LibraryExtension::class.java)
 
+        val dimensionsList = DimensionsEnum.values().map { it.title }
+
         if (libraryExtension != null) {
-            libraryExtension.setFlavorDimensions(DIMENSIONS_LIST)
+            libraryExtension.setFlavorDimensions(dimensionsList)
             configureFlavors(libraryExtension.productFlavors)
         } else if (appExtension != null) {
-            appExtension.flavorDimensions(*DIMENSIONS_LIST.toTypedArray())
+            appExtension.flavorDimensions(*dimensionsList.toTypedArray())
             configureFlavors(appExtension.productFlavors)
         }
     }

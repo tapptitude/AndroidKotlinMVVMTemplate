@@ -4,11 +4,11 @@ enum class FlavorsEnum(val flavorName: String, val baseUrl: String, val flavorDi
     PRODUCTION(
         flavorName = "production",
         baseUrl = "https://foodish-api.herokuapp.com/",
-        flavorDimension = DIMENSION_API
+        flavorDimension = DimensionsEnum.API.title
     ),
     DEV(
         flavorName = "dev",
         baseUrl = "https://foodish-api.herokuapp.com/",
-        flavorDimension = DIMENSION_API
+        flavorDimension = DimensionsEnum.API.title
     )
 }
