@@ -11,6 +11,9 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.ANDROIDX_LIFECYCLE}"
     const val ANDROIDX_LIFECYCLE_COMMON =
         "androidx.lifecycle:lifecycle-common-java8:${Versions.ANDROIDX_LIFECYCLE}"
+    const val ANDROIDX_NAVIGATION_FRAGMENT =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.ANDROIDX_NAVIGATION}"
+    const val ANDROIDX_NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.ANDROIDX_NAVIGATION}"
 
     const val GOOGLE_MATERIAL = "com.google.android.material:material:${Versions.GOOGLE_MATERIAL}"
 
@@ -36,6 +39,7 @@ object Dependencies {
         const val ANDROIDX_APP_COMPAT = "1.4.1"
         const val ANDROIDX_CONSTRAINT_LAYOUT = "2.1.3"
         const val ANDROIDX_LIFECYCLE = "2.4.1"
+        const val ANDROIDX_NAVIGATION = "2.4.1"
 
         const val GOOGLE_MATERIAL = "1.5.0"
 

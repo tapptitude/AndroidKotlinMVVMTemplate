@@ -3,6 +3,7 @@ import library.extension.addAndroidAndTestDependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 apply<plugin.AddFlavorsPlugin>()
@@ -43,6 +44,8 @@ dependencies {
     implementation(library.Dependencies.ANDROIDX_LIFECYCLE_VIEWMODEL)
     implementation(library.Dependencies.ANDROIDX_LIFECYCLE_LIVEDATA)
     implementation(library.Dependencies.ANDROIDX_LIFECYCLE_COMMON)
+    implementation(library.Dependencies.ANDROIDX_NAVIGATION_FRAGMENT)
+    implementation(library.Dependencies.ANDROIDX_NAVIGATION_UI)
 
     implementation(library.Dependencies.KOIN_ANDROID)
     implementation(library.Dependencies.KOIN_CORE)

@@ -6,9 +6,9 @@ buildscript {
     }
 
     dependencies {
-        classpath(library.Plugins.ANDROID_TOOLS_BUILD_GRADLE)
-        classpath(library.Plugins.KOTLIN_GRADLE_PLUGIN)
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
+        classpath(library.TopLevelDependencies.ANDROID_TOOLS_BUILD_GRADLE)
+        classpath(library.TopLevelDependencies.KOTLIN_GRADLE_PLUGIN)
+        classpath(library.TopLevelDependencies.NAVIGATION_SAFE_ARGS)
     }
 }
 
