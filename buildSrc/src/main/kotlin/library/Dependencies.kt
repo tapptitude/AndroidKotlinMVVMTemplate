@@ -34,6 +34,8 @@ object Dependencies {
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_KAPT = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
 
+    const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
+
     object Versions {
         const val ANDROIDX_CORE_KTX = "1.7.0"
         const val ANDROIDX_APP_COMPAT = "1.4.1"
@@ -49,5 +51,6 @@ object Dependencies {
         const val MOSHI = "1.13.0"
         const val KOTLINX_COROUTINES = "1.6.0"
         const val GLIDE = "4.13.0"
+        const val TIMBER = "5.0.1"
     }
 }

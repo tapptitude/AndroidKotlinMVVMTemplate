@@ -37,6 +37,7 @@ android {
 dependencies {
     api(project(":core"))
     api(project(":imageLoading"))
+    api(project(":logger"))
 
     implementation(library.Dependencies.ANDROIDX_CORE_KTX)
     implementation(library.Dependencies.ANDROIDX_APP_COMPAT)
