@@ -1,5 +1,3 @@
-import library.extension.addAndroidAndTestDependencies
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -46,13 +44,12 @@ android {
 dependencies {
     implementation(project(":featureHome"))
 
-    implementation(library.Dependencies.ANDROIDX_CORE_KTX)
-    implementation(library.Dependencies.ANDROIDX_APP_COMPAT)
-    implementation(library.Dependencies.GOOGLE_MATERIAL)
-    implementation(library.Dependencies.KOIN_ANDROID)
-    implementation(library.Dependencies.KOIN_CORE)
-    implementation(library.Dependencies.ANDROIDX_NAVIGATION_FRAGMENT)
-    implementation(library.Dependencies.ANDROIDX_NAVIGATION_UI)
+    implementation(appLibs.androidXCoreKtx)
+    implementation(appLibs.androidXAppCompat)
+    implementation(appLibs.googleMaterial)
+    implementation(appLibs.bundles.koinBundle)
+    implementation(appLibs.bundles.androidXNavigationBundle)
 
-    addAndroidAndTestDependencies()
+    implementation(testLibs.bundles.testBundle)
+    implementation(androidTestLibs.bundles.androidTestBundle)
 }

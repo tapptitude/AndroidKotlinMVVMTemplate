@@ -36,11 +36,9 @@ dependencies {
     api(project(":network"))
     api(project(":imageLoading"))
 
-    implementation(library.Dependencies.ANDROIDX_CORE_KTX)
-    implementation(library.Dependencies.ANDROIDX_LIFECYCLE_COMMON)
+    implementation(appLibs.androidXCoreKtx)
+    implementation(appLibs.androidXLifecycleCommon)
+    implementation(appLibs.kotlinXCoroutines)
 
-    implementation(library.Dependencies.KOIN_CORE)
-    implementation(library.Dependencies.KOIN_ANDROID)
-
-    implementation(library.Dependencies.KOTLINX_COROUTINES)
+    implementation(appLibs.bundles.koinBundle)
 }

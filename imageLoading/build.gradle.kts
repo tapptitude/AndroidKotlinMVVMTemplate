@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation(library.Dependencies.KOIN_ANDROID)
-    implementation(library.Dependencies.GLIDE)
-    kapt(library.Dependencies.GLIDE_KAPT)
+    implementation(appLibs.bundles.koinBundle)
+    implementation(appLibs.glide)
+    kapt(appLibs.glideKapt)
 }

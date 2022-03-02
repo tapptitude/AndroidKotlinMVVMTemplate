@@ -30,14 +30,11 @@ android {
 dependencies {
     implementation(project(":config"))
 
-    implementation(library.Dependencies.ANDROIDX_CORE_KTX)
-    implementation(library.Dependencies.OKHTTP_LIBRARY)
-    implementation(library.Dependencies.OKHTTP_INTERCEPTOR)
-    implementation(library.Dependencies.RETROFIT)
-    implementation(library.Dependencies.RETROFIT_MOSHI_CONVERTER)
-    implementation(library.Dependencies.KOIN_CORE)
-    implementation(library.Dependencies.KOIN_ANDROID)
-    implementation(library.Dependencies.MOSHI)
-    implementation(library.Dependencies.KOTLINX_COROUTINES)
-    kapt(library.Dependencies.MOSHI_KAPT)
+    implementation(appLibs.androidXCoreKtx)
+    implementation(appLibs.bundles.okhttpBundle)
+    implementation(appLibs.bundles.retrofitBundle)
+    implementation(appLibs.bundles.koinBundle)
+    implementation(appLibs.kotlinXCoroutines)
+    implementation(appLibs.moshi)
+    kapt(appLibs.moshiKapt)
 }

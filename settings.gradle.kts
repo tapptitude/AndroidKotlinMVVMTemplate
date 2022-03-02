@@ -6,6 +6,22 @@ pluginManagement {
     }
 }
 
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("appLibs") {
+            from(files("gradle/dependencies.toml"))
+        }
+
+        create("testLibs") {
+            from(files("gradle/testDependencies.toml"))
+        }
+
+        create("androidTestLibs") {
+            from(files("gradle/androidTestDependencies.toml"))
+        }
+    }
+}
+
 rootProject.name = "Tapptitude Template"
 
 include(":app")

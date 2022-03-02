@@ -29,7 +29,6 @@ android {
 dependencies {
     implementation(project(":config"))
 
-    implementation(library.Dependencies.TIMBER)
-    implementation(library.Dependencies.KOIN_ANDROID)
-    implementation(library.Dependencies.KOIN_CORE)
+    implementation(appLibs.timber)
+    implementation(appLibs.bundles.koinBundle)
 }
