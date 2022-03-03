@@ -11,6 +11,15 @@ android {
             }
         }
     }
+
+    buildTypes {
+        buildTypes.forEach {
+            it.buildConfigField("String", "APPLICATION_ID", "\"${configuration.Android.APPLICATION_ID}\"")
+            it.buildConfigField("String", "VERSION_NAME", "\"${configuration.Android.VERSION_NAME}\"")
+            it.buildConfigField("int", "VERSION_CODE", configuration.Android.VERSION_CODE.toString())
+        }
+    }
+
     buildFeatures {
         buildConfig = true
     }
