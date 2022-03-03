@@ -1,3 +1,5 @@
+import ext.addBasicConfiguration
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -17,6 +19,10 @@ allprojects {
         google()
         mavenCentral()
     }
+}
+
+subprojects {
+    addBasicConfiguration()
 }
 
 tasks.register("clean", Delete::class) {

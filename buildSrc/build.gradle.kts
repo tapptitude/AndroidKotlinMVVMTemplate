@@ -8,6 +8,16 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+kotlin {
+    version = JavaVersion.VERSION_11.toString()
+}
+
 dependencies {
-    implementation("com.android.tools.build:gradle:7.1.2")
+    implementation(appLibs.androidToolsBuildGradle)
+    implementation(appLibs.kotlinGradlePlugin)
 }
