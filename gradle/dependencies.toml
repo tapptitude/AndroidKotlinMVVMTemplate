@@ -56,8 +56,6 @@ androidToolsBuildGradle = { module = "com.android.tools.build:gradle", version.r
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 navigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidXNavigation" }
 
-[plugins]
-
 [bundles]
 androidXLifecycleBundle = ["androidXLifecycleViewModel", "androidXLifecycleLiveData", "androidXLifecycleCommon"]
 androidXNavigationBundle = ["androidXNavigationFragment", "androidXNavigationUI"]

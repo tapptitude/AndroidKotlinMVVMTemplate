@@ -6,7 +6,5 @@ androidXEspressoCore = "3.4.0"
 androidXExtJunit = { module = "androidx.test.ext:junit", version.ref = "androidXExtJunit" }
 androidXEspressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "androidXEspressoCore" }
 
-[plugins]
-
 [bundles]
 androidTestBundle = ["androidXExtJunit", "androidXEspressoCore"]
