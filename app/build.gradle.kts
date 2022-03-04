@@ -4,6 +4,8 @@ plugins {
     kotlin("kapt")
 }
 
+apply<plugin.SigningConfigPlugin>()
+
 android {
     defaultConfig {
         applicationId = configuration.Android.APPLICATION_ID
@@ -15,6 +17,8 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            signingConfig = signingConfigs.getByName(plugin.SigningConfigPlugin.SIGNATURE_RELEASE)
         }
     }
 }
