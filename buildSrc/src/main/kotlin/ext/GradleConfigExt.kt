@@ -32,13 +32,13 @@ fun PluginContainer.addBasicConfiguration(project: Project) {
                     .addBaseCommonConfig()
             }
 
-            if (project.extensions.findByType(BaseAppModuleExtension::class.java) != null) {
+            if (extensions.findByType(BaseAppModuleExtension::class.java) != null) {
                 extensions
                     .getByType<BaseAppModuleExtension>()
                     .addBaseCommonConfig()
             }
 
-            if (project.extensions.findByType(InternalLibraryExtension::class.java) != null) {
+            if (extensions.findByType(InternalLibraryExtension::class.java) != null) {
                 extensions
                     .getByType<InternalLibraryExtension>()
                     .addBaseCommonConfig()
