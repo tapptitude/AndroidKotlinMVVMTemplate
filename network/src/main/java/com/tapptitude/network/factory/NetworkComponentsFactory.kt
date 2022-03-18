@@ -2,14 +2,17 @@ package com.tapptitude.network.factory
 
 import com.squareup.moshi.Moshi
 import com.tapptitude.config.AppConfig
+import com.tapptitude.network.interceptor.SessionInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 internal object NetworkComponentsFactory {
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(sessionInterceptor: SessionInterceptor): OkHttpClient {
         return OkHttpClient.Builder().apply {
+            addInterceptor(sessionInterceptor)
+
             if (AppConfig.DEBUG) {
                 val loggingInterceptor = HttpLoggingInterceptor()
                 loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
