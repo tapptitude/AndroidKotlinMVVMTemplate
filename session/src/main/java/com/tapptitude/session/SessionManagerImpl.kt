@@ -30,7 +30,7 @@ internal class SessionManagerImpl : SessionManager, KoinComponent {
         }
     }
 
-    override fun onLoggedOut(lastUserId: String) {
+    override fun onLoggedOut(lastUserId: String?) {
         val loggedOutState = LoggedOut(lastUserId)
         currentLoginStateFlow.value = loggedOutState
 

@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val homeModules = module {
-    viewModel { HomeViewModel(loadImageUseCase = get()) }
+    viewModel { HomeViewModel(loadImageUseCase = get(), sessionManager = get()) }
 }

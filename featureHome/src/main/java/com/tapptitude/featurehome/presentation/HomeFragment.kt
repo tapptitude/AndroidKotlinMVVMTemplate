@@ -11,6 +11,7 @@ import com.tapptitude.core.util.viewBinding
 import com.tapptitude.featurehome.R
 import com.tapptitude.featurehome.databinding.FragmentHomeBinding
 import com.tapptitude.imageloading.ImageLoader
+import com.tapptitude.session.model.LoggedIn
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpContent()
+        setUpActions()
         setUpObservers()
 
         viewModel.loadRandomImage()
@@ -34,6 +36,12 @@ class HomeFragment : Fragment() {
 
     private fun setUpContent() {
         binding.titleTV.text = getString(R.string.title_including_flavor_format, AppConfig.FLAVOR)
+    }
+
+    private fun setUpActions() {
+        binding.loginStateBtn.setOnClickListener {
+            viewModel.toggleLoginMode()
+        }
     }
 
     private fun setUpObservers() {
@@ -47,6 +55,16 @@ class HomeFragment : Fragment() {
                 urlToLoad = imageData.imageUrl,
                 crossFadeAnimation = true
             )
+        }
+
+        viewModel.loginState.observe(viewLifecycleOwner) { loginState ->
+            if (loginState is LoggedIn) {
+                binding.loginStateBtn.setText(R.string.action_logout)
+                binding.loginStateLabelTV.text = getString(R.string.status_logged_in_x, loginState.userId)
+            } else {
+                binding.loginStateBtn.setText(R.string.action_login)
+                binding.loginStateLabelTV.text = getString(R.string.status_logged_out)
+            }
         }
     }
 }
