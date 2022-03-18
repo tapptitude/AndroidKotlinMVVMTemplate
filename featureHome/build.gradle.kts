@@ -8,6 +8,7 @@ dependencies {
     api(project(":core"))
     api(project(":imageLoading"))
     api(project(":logger"))
+    api(project(":session"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)
