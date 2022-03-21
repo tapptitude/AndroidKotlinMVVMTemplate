@@ -14,6 +14,7 @@ dependencies {
     implementation(appLibs.androidXAppCompat)
     implementation(appLibs.androidXConstraintLayout)
     implementation(appLibs.androidXLifecycleViewModel)
+    implementation(appLibs.kotlinXCoroutines)
     implementation(appLibs.bundles.androidXLifecycleBundle)
     implementation(appLibs.bundles.androidXNavigationBundle)
     implementation(appLibs.bundles.koinBundle)

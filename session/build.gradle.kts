@@ -6,5 +6,6 @@ plugins {
 dependencies {
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXDatastore)
+    implementation(appLibs.kotlinXCoroutines)
     implementation(appLibs.bundles.koinBundle)
 }
