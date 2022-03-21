@@ -25,7 +25,7 @@ internal class SessionManagerImpl : SessionManager, KoinComponent {
         val loggedInState = LoggedIn(accessToken, userId)
         currentLoginStateFlow.value = loggedInState
 
-        localScope.launch(Dispatchers.IO) {
+        localScope.launch {
             localSessionDataManager.updateLoginState(loggedInState)
         }
     }
@@ -34,13 +34,13 @@ internal class SessionManagerImpl : SessionManager, KoinComponent {
         val loggedOutState = LoggedOut(lastUserId)
         currentLoginStateFlow.value = loggedOutState
 
-        localScope.launch(Dispatchers.IO) {
+        localScope.launch {
             localSessionDataManager.updateLoginState(loggedOutState)
         }
     }
 
     private fun loadSavedLoginState() {
-        localScope.launch(Dispatchers.IO) {
+        localScope.launch {
             currentLoginStateFlow.value = localSessionDataManager.loadLoginState()
         }
     }
