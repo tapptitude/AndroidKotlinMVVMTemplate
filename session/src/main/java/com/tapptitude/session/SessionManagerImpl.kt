@@ -8,14 +8,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-internal class SessionManagerImpl : SessionManager, KoinComponent {
-    private val localSessionDataManager: LocalSessionDataManager by inject()
-    private val localScope = CoroutineScope(Dispatchers.IO)
-
+internal class SessionManagerImpl(
+    private val localSessionDataManager: LocalSessionDataManager
+) : SessionManager {
     override val currentLoginStateFlow = MutableStateFlow<LoginState>(LoggedOut(null))
+
+    private val localScope = CoroutineScope(Dispatchers.IO)
 
     init {
         loadSavedLoginState()

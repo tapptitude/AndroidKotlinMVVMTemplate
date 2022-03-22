@@ -6,7 +6,7 @@ import com.tapptitude.session.storage.LocalSessionDataManager
 import org.koin.dsl.module
 
 val sessionModule = module {
-    single<SessionManager> { SessionManagerImpl() }
+    single<SessionManager> { SessionManagerImpl(localSessionDataManager = get()) }
 
     factory { LocalSessionDataManager(appContext = get()) }
 }
