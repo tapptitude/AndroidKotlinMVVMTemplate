@@ -14,7 +14,7 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
   through  `buildSrc` [(Kotlin DSL)](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - Supports `dev` & `production` flavors out of the box
 - Lays the foundation for independent core business & presentation modules [`network`](#network), [`logger`](#logger),
-  [`imageLoading`](#imageLoading), [`persistence`](#persistence), [`session`](#session)
+  [`imageLoading`](#imageloading), [`persistence`](#persistence), [`session`](#session)
 - Dependency updates management is done through [`gradle-versions`](https://github.com/ben-manes/gradle-versions-plugin)
 
 ## Quick setup
@@ -22,7 +22,7 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 1. Click the [`Use this template`](https://github.com/tapptitude/AndroidKotlinMVVMTemplate/generate) button on this page
    to generate your own project using this template.
 2. Update package name in [`Android`](buildSrc/src/main/kotlin/configuration/Android.kt)
-   class and in [`AndroidManifest.xml`](app/src/AndroidManifest.xml).
+   class and in [`AndroidManifest.xml`](app/src/main/AndroidManifest.xml).
 3. Update signing configuration available in the Gradle DSL
    plugin [`SigningConfigPlugin`](buildSrc/src/main/kotlin/plugin/SigningConfigPlugin.kt)
 
