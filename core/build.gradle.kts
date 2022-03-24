@@ -4,9 +4,7 @@ plugins {
 }
 
 dependencies {
-    api(project(":config"))
     api(project(":network"))
-    api(project(":imageLoading"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXLifecycleCommon)
