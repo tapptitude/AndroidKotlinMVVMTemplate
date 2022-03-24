@@ -10,10 +10,11 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 ## Main features
 
 - Dependencies managed through Gradle version catalogs `*.toml`
-- Application signing, flavors & dimensions setup done through  `buildSrc` - Gradle DSL
+- Application signing, flavors & dimensions setup done
+  through  `buildSrc` [(Kotlin DSL)](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - Supports `dev` & `production` flavors out of the box
-- Lays the foundation for independent core business modules [`network`](#network), [`logger`](#logger)
-  , [`imageLoading`](#imageLoading), [`persistence`](#persistence)
+- Lays the foundation for independent core business & presentation modules [`network`](#network), [`logger`](#logger),
+  [`imageLoading`](#imageLoading), [`persistence`](#persistence), [`session`](#session)
 - Dependency updates management is done through [`gradle-versions`](https://github.com/ben-manes/gradle-versions-plugin)
 
 ## Quick setup
