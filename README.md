@@ -9,7 +9,8 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 
 ## Main features
 
-- Dependencies managed through Gradle version catalogs `*.toml`
+- Dependencies managed
+  through [Gradle version catalogs](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) `*.toml`
 - Application signing, flavors & dimensions setup done
   through  `buildSrc` [(Kotlin DSL)](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - Supports `dev` & `production` flavors out of the box
@@ -95,8 +96,8 @@ a [domain layer](https://developer.android.com/jetpack/guide/domain-layer)).
 
 ### network
 
-Provides a place to implement everything network. It handles everything related to API calls, DTO models, session
-handling through authentication headers and network level error handling. It
+Provides a place to implement everything that's network related. It handles logic related to API calls, DTO models,
+session handling through authentication headers and network level error handling. It
 uses [Retrofit](https://square.github.io/retrofit/) & [okhttp](https://square.github.io/okhttp/) for the network layer
 implementation and [Moshi](https://github.com/square/moshi) for `json` parsing.
 
@@ -107,7 +108,9 @@ WIP
 ### session
 
 It handles everything related to a user session and saves current login state. Provides a way to listen for such state
-changes, while giving data about the current user and authentication information.
+changes, while giving data about the current user and authentication information. It
+uses [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore) under the hood for
+storing key-value pairs asynchronously.
 
 ### logger
 
