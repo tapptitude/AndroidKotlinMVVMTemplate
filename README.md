@@ -50,8 +50,8 @@ This template adheres to the following architectural principles:
 - The app module uses a single-activity architecture, based on
   the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) for navigation
   operations.
-- It follows the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID) software principles which tend to increase
-  flexibility & maintainability while keeping the code readable.
+- It follows the [S.O.L.I.D.](https://en.wikipedia.org/wiki/SOLID) software principles which help increasing flexibility
+  & maintainability while keeping the code readable.
 - A modular approach was used in order to improve on
   the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns) topic, while also helping with
   isolating feature functionalities. This aspect also helps on the build speed on the long run as only modified modules
@@ -66,10 +66,31 @@ This template adheres to the following architectural principles:
         featureHome-->session;
         featureHome-->imageLoading;
         featureHome-->logger;
+        featureHome-->config;
         core-->network;
         core-->persistence;
         network-->session;
+        network-->config;
+        logger-->config;
 ```
+
+### app
+
+The app module is the central place for all the other modules. It consists of a single `Activity` which hosts all the
+navigation inside the app and provides basic UI functionality for `featureX` modules.
+
+### featureHome
+
+Represents a sample implementation of a `feature` module. It showcases how the `core` module provides all the needed
+domain layer logic and the `feature` module focuses only on
+the [presentation](https://developer.android.com/jetpack/guide/ui-layer) (also knows as the UI) layer.
+
+### core
+
+It gathers logic from `network` & `persistence` modules and creates the required infrastructure to host the business
+level `Repositories` and `UseCases` that it later exposes to the `featureX` layer modules. It also hosts the UI models
+and their respective converters. Most of the common business code is also hosted here (it's basically
+a [domain layer](https://developer.android.com/jetpack/guide/domain-layer)).
 
 ### network
 
@@ -77,6 +98,10 @@ Provides a place to implement everything network. It handles everything related 
 handling through authentication headers and network level error handling. It
 uses [Retrofit](https://square.github.io/retrofit/) & [okhttp](https://square.github.io/okhttp/) for the network layer
 implementation and [Moshi](https://github.com/square/moshi) for `json` parsing.
+
+### persistence
+
+WIP
 
 ### session
 
@@ -94,20 +119,19 @@ Provides an image loading solution for the presentation layer. It uses [Glide](h
 the image loading side and provides a streamlined helper class that can be easily extended. Image loading logic provider
 can be easily switched due to this abstraction layer.
 
-### core
+### config
 
-It gathers logic from `network` & `persistence` modules and creates the required infrastructure to host the business
-level `Repositories` and `UseCases` that it later exposes to the `featureX` layer modules. It also hosts the UI models
-and their respective converters. Most of the common business code is also hosted here (it's basically
-a [domain layer](https://developer.android.com/jetpack/guide/domain-layer)).
+Provides build specific configuration to any module that needs it. Provided information is related to:
 
-### persistence
-
-WIP
+- app version code
+- app version name
+- app package identifier
+- build flavor
+- debug mode
 
 ## License
 
-Copyright (c) 2022 Tapptitude
+Copyright (c) 2022 [Tapptitude](https://www.tapptitude.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
