@@ -55,7 +55,6 @@ class HomeViewModel(
 
     private fun doLogout() {
         val loggedInState = sessionManager.currentLoginStateFlow.value as? LoggedIn
-
         sessionManager.onLoggedOut(loggedInState?.userId)
     }
 
