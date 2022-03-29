@@ -9,6 +9,7 @@ dependencies {
     api(project(":imageLoading"))
     api(project(":logger"))
     api(project(":config"))
+    implementation(project(":uiCommon"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)
