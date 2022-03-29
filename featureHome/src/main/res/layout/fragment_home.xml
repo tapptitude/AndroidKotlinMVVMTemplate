@@ -35,4 +35,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/loginStateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/action_login" />
+
+    <TextView
+        android:id="@+id/loginStateLabelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/loginStateBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/status_logged_out" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

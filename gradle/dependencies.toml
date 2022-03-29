@@ -32,7 +32,7 @@ androidXLifecycleLiveData = { module = "androidx.lifecycle:lifecycle-livedata-kt
 androidXLifecycleCommon = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "androidXLifecycle" }
 androidXNavigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidXNavigation" }
 androidXNavigationUI = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidXNavigation" }
-androidXDatastore = { module = "androidx.datastore:datastore", version.ref = "androidXDatastore" }
+androidXDatastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidXDatastore" }
 
 googleMaterial = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
 
