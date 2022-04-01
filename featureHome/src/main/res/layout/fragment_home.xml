@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/standard_padding">
 
     <TextView
         android:id="@+id/titleTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceHeadline5"
         android:textColor="#000"
-        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="This is a sample title" />
 
@@ -20,7 +20,7 @@
         android:id="@+id/photoIV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/home_image_margin_top"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="16:9"

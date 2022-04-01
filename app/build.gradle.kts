@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":featureHome"))
+    api(project(":featureHome"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)

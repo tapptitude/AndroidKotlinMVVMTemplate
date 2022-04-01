@@ -10,6 +10,7 @@ dependencies {
     api(project(":logger"))
     api(project(":session"))
     api(project(":config"))
+    implementation(project(":uiCommon"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)
