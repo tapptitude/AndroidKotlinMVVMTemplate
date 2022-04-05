@@ -17,10 +17,14 @@ retrofit = "2.9.0"
 moshi = "1.13.0"
 glide = "4.13.0"
 timber = "5.0.1"
+firebaseCrashlytics = "18.2.9"
+firebaseAnalytics = "20.1.0"
 
 # Top level dependencies
 androidToolsBuildGradle = "7.1.2"
 kotlinGradlePlugin = "1.6.10"
+googleServices = "4.3.10"
+firebaseGradle = "2.8.1"
 
 [libraries]
 # Module level dependencies
@@ -55,10 +59,15 @@ glideKapt = { module = "com.github.bumptech.glide:compiler", version.ref = "glid
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
+firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebaseAnalytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics"}
+
 # Top level dependencies
 androidToolsBuildGradle = { module = "com.android.tools.build:gradle", version.ref = "androidToolsBuildGradle" }
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 navigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidXNavigation" }
+googleServices = { module = "com.google.gms:google-services", version.ref = "googleServices" }
+firebaseGradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseGradle" }
 
 [bundles]
 androidXLifecycleBundle = ["androidXLifecycleViewModel", "androidXLifecycleLiveData", "androidXLifecycleCommon"]

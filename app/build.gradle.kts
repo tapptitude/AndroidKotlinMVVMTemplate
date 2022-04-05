@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("com.google.firebase.crashlytics")
+    id ("com.google.gms.google-services")
     kotlin("kapt")
 }
 
@@ -14,10 +16,15 @@ android {
     }
 
     buildTypes {
+
+        getByName("debug") {
+            this.manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+        }
+
         getByName("release") {
             isMinifyEnabled = false
+            this.manifestPlaceholders["crashlyticsCollectionEnabled"] = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-
             signingConfig = signingConfigs.getByName(plugin.SigningConfigPlugin.SIGNATURE_RELEASE)
         }
     }
@@ -25,6 +32,7 @@ android {
 
 dependencies {
     api(project(":featureHome"))
+    api(project(":crashlytics"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)

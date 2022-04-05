@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "581089795829",
+    "project_id": "androidkotlinmvvmtemplate",
+    "storage_bucket": "androidkotlinmvvmtemplate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581089795829:android:bbe03b18c9b29f1d73efbc",
+        "android_client_info": {
+          "package_name": "com.tapptitude.template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581089795829-h29agic9up0tuergaogmmr7e3sfg3nr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7fl61VH-POW27wMoU0cEy5gnSGdV5At4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581089795829-h29agic9up0tuergaogmmr7e3sfg3nr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

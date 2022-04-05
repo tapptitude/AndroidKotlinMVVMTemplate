@@ -11,6 +11,8 @@ buildscript {
         classpath(appLibs.androidToolsBuildGradle)
         classpath(appLibs.kotlinGradlePlugin)
         classpath(appLibs.navigationSafeArgs)
+        classpath(appLibs.googleServices)
+        classpath(appLibs.firebaseGradle)
     }
 }
 
