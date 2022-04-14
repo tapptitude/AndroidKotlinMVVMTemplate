@@ -5,7 +5,7 @@ import com.tapptitude.core.model.extension.toEntity
 import com.tapptitude.core.model.extension.toImage
 import com.tapptitude.network.source.ImageRemoteDataSource
 import com.tapptitude.persistence.images.ImagesDao
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
 class ImageRepositoryImpl(
@@ -13,7 +13,7 @@ class ImageRepositoryImpl(
     private val imagesDao: ImagesDao
 ) : ImageRepository {
 
-    override suspend fun getRandomImage(): Image = withContext(Dispatchers.IO) {
+    override suspend fun getRandomImage(): Image = withContext(IO) {
         try {
             imagesDao.saveAndGet(imageRemoteDataSource.getRandomImage().toEntity()).toImage()
         } catch (e: Exception) {
