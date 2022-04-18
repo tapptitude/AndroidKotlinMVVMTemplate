@@ -9,7 +9,7 @@ import com.tapptitude.persistence.images.ImagesDao
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
-const val DATABASE_NAME = "LocalStore.db"
+private const val DATABASE_NAME = "LocalStore.db"
 
 val databaseModule = module {
     fun provideDatabase(application: Application): LocalDatabase =
