@@ -4,8 +4,8 @@ import com.tapptitude.core.model.Image
 import com.tapptitude.network.dto.ImageDto
 import com.tapptitude.persistence.images.ImageEntity
 
-fun ImageDto.toEntity() = ImageEntity(url = imageUrl.orEmpty())
+internal fun ImageDto.toEntity() = ImageEntity(url = imageUrl.orEmpty())
 
-fun ImageEntity.toImage() = Image(imageUrl = url)
+internal fun ImageEntity.toImage() = Image(imageUrl = url)
 
-fun Image.toImageDto() = ImageDto(imageUrl = imageUrl)
+internal fun Image.toImageDto() = ImageDto(imageUrl = imageUrl)
