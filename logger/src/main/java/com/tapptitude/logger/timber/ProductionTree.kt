@@ -9,6 +9,6 @@ class ProductionTree : Timber.Tree() {
         if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO || priority == Log.WARN) return
 
         // Log to Crashlytics
-        CrashlyticsFirebase().setLog(message)
+        CrashlyticsFirebase().addLog(message)
     }
 }

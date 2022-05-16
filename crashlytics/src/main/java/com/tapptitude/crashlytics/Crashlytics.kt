@@ -4,7 +4,7 @@ import com.google.firebase.crashlytics.CustomKeysAndValues
 
 interface Crashlytics {
 
-    fun setLog(message: String)
+    fun addLog(message: String)
 
     fun setKey(key: String, value: String)
 
@@ -19,4 +19,6 @@ interface Crashlytics {
     fun setKey(key: String, value: Long)
 
     fun setKeys(keyValuePairList: CustomKeysAndValues)
+
+    fun submitCrash(throwable: Throwable)
 }

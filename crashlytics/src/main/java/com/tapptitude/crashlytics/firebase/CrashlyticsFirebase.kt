@@ -6,7 +6,7 @@ import com.tapptitude.crashlytics.Crashlytics
 
 class CrashlyticsFirebase : Crashlytics {
 
-    override fun setLog(message: String) {
+    override fun addLog(message: String) {
         FirebaseCrashlytics.getInstance().log(message)
     }
 
@@ -36,6 +36,10 @@ class CrashlyticsFirebase : Crashlytics {
 
     override fun setKeys(keyValuePairList: CustomKeysAndValues) {
         FirebaseCrashlytics.getInstance().setCustomKeys(keyValuePairList)
+    }
+
+    override fun submitCrash(throwable: Throwable) {
+        FirebaseCrashlytics.getInstance().recordException(throwable)
     }
 
 }
