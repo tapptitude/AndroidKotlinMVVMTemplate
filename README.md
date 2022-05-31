@@ -1,4 +1,4 @@
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.10-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.21-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-7.4-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://en.wikipedia.org/wiki/MIT_License)
@@ -103,7 +103,9 @@ implementation and [Moshi](https://github.com/square/moshi) for `json` parsing.
 
 ### persistence
 
-WIP
+Provides a place to implement everything that's database caching related. It handles the logic for creating and migrating the database.
+It also exposes a `Dao` for each database table, so that the `core` module can perform actions on each table. It uses 
+[Room](https://developer.android.com/training/data-storage/room) as the database implementation.
 
 ### session
 
