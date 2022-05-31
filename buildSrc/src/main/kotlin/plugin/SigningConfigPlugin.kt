@@ -6,7 +6,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 class SigningConfigPlugin : Plugin<Project> {
     override fun apply(project: Project) {
