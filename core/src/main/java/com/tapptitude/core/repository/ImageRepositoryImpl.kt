@@ -15,7 +15,7 @@ class ImageRepositoryImpl(
 
     override suspend fun getRandomImage(): Image = withContext(IO) {
         try {
-            imagesDao.saveAndGet(imageRemoteDataSource.getRandomImage().toEntity()).toImage()
+            imagesDao.save(imageRemoteDataSource.getRandomImage().toEntity()).toImage()
         } catch (e: Exception) {
             imagesDao.getRandomImage()?.toImage() ?: throw e
         }

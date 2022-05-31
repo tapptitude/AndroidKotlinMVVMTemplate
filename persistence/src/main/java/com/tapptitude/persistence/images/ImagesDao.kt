@@ -25,8 +25,8 @@ interface ImagesDao {
     fun getRandomImage(): ImageEntity? = getAllImages().randomOrNull()
 
     @Transaction
-    fun saveAndGet(image: ImageEntity): ImageEntity {
+    fun save(image: ImageEntity): ImageEntity {
         insert(image)
-        return getImage(image.url)
+        return image
     }
 }
