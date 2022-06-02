@@ -1,12 +1,13 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.firebase.crashlytics")
 }
 
 dependencies {
     implementation(project(":config"))
-    implementation(project(":crashlytics"))
 
-    implementation(appLibs.timber)
     implementation(appLibs.bundles.koinBundle)
+    implementation(appLibs.firebaseCrashlytics)
+    implementation(appLibs.firebaseAnalytics)
 }

@@ -19,9 +19,14 @@ glide = "4.13.0"
 timber = "5.0.1"
 room = "2.4.2"
 
+firebaseCrashlytics = "18.2.10"
+firebaseAnalytics = "21.0.0"
+
 # Top level dependencies
-androidToolsBuildGradle = "7.2.1"
+androidToolsBuildGradle = "7.1.2"
 kotlinGradlePlugin = "1.6.21"
+googleServices = "4.3.10"
+firebaseGradle = "2.8.1"
 
 [libraries]
 # Module level dependencies
@@ -56,6 +61,9 @@ glideKapt = { module = "com.github.bumptech.glide:compiler", version.ref = "glid
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
+firebaseCrashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebaseAnalytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics"}
+
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 roomKsp = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -64,6 +72,8 @@ roomKsp = { module = "androidx.room:room-compiler", version.ref = "room" }
 androidToolsBuildGradle = { module = "com.android.tools.build:gradle", version.ref = "androidToolsBuildGradle" }
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 navigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidXNavigation" }
+googleServices = { module = "com.google.gms:google-services", version.ref = "googleServices" }
+firebaseGradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseGradle" }
 
 [bundles]
 androidXLifecycleBundle = ["androidXLifecycleViewModel", "androidXLifecycleLiveData", "androidXLifecycleCommon"]
