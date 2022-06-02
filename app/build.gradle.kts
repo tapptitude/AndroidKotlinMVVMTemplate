@@ -40,6 +40,6 @@ dependencies {
     implementation(appLibs.bundles.koinBundle)
     implementation(appLibs.bundles.androidXNavigationBundle)
 
-    implementation(testLibs.bundles.testBundle)
-    implementation(androidTestLibs.bundles.androidTestBundle)
+    testImplementation(testLibs.bundles.testBundle)
+    androidTestImplementation(androidTestLibs.bundles.androidTestBundle)
 }
