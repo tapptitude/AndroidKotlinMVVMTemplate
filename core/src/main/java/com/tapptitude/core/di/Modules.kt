@@ -6,7 +6,12 @@ import com.tapptitude.core.usecase.LoadImageUseCase
 import org.koin.dsl.module
 
 val coreModule = module {
-    factory<ImageRepository> { ImageRepositoryImpl(imageRemoteDataSource = get()) }
+    factory<ImageRepository> {
+        ImageRepositoryImpl(
+            imageRemoteDataSource = get(),
+            imagesDao = get()
+        )
+    }
 
     factory { LoadImageUseCase(imageRepository = get()) }
 }

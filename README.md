@@ -1,4 +1,4 @@
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.10-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.21-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-7.4-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://en.wikipedia.org/wiki/MIT_License)
@@ -103,7 +103,9 @@ implementation and [Moshi](https://github.com/square/moshi) for `json` parsing.
 
 ### persistence
 
-WIP
+Provides a place to implement everything that's database caching related. It handles the logic for creating and migrating the database.
+It also exposes a `Dao` for each database table, so that the `core` module can perform actions on each table. It uses 
+[Room](https://developer.android.com/training/data-storage/room) as the database implementation.
 
 ### session
 
@@ -135,7 +137,7 @@ Provides build specific configuration to any module that needs it. Provided info
 
 ## License
 
-Copyright (c) 2022 [Tapptitude](https://www.tapptitude.com/)
+Copyright © 2022 [Tapptitude](https://www.tapptitude.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
@@ -146,6 +148,6 @@ The above copyright notice and this permission notice shall be included in all c
 Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
