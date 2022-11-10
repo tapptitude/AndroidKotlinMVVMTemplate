@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    alias(appLibs.plugins.ksp)
 }
 
 dependencies {
@@ -14,5 +14,5 @@ dependencies {
     implementation(appLibs.bundles.koinBundle)
     implementation(appLibs.kotlinXCoroutines)
     implementation(appLibs.moshi)
-    kapt(appLibs.moshiKapt)
+    ksp(appLibs.moshiKsp)
 }
