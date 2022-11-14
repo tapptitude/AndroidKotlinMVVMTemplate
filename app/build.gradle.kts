@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.firebase.crashlytics")
     id("com.google.gms.google-services")
-    kotlin("kapt")
 }
 
 apply<plugin.SigningConfigPlugin>()
