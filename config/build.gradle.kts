@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace = "com.tapptitude.config"
+
     productFlavors {
         configuration.FlavorsEnum.values().forEach { flavorData ->
             getByName(flavorData.flavorName) {

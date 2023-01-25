@@ -1,4 +1,4 @@
-package com.tapptitude.featurehome.presentation
+package com.tapptitude.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

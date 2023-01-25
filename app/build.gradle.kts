@@ -8,6 +8,8 @@ plugins {
 apply<plugin.SigningConfigPlugin>()
 
 android {
+    namespace = "com.tapptitude.template"
+
     defaultConfig {
         applicationId = configuration.Android.APPLICATION_ID
         versionCode = configuration.Android.VERSION_CODE
@@ -30,7 +32,7 @@ android {
 }
 
 dependencies {
-    api(project(":featureHome"))
+    api(project(":feature:home"))
     api(project(":crashlytics"))
 
     implementation(appLibs.androidXCoreKtx)

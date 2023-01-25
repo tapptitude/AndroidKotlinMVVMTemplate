@@ -4,13 +4,17 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+android {
+    namespace = "com.tapptitude.feature.home"
+}
+
 dependencies {
     api(project(":core"))
     api(project(":imageLoading"))
     api(project(":logger"))
     api(project(":session"))
     api(project(":config"))
-    implementation(project(":uiCommon"))
+    implementation(project(":foundation:ui"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)

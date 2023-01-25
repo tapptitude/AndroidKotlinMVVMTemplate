@@ -5,6 +5,8 @@ plugins {
 }
 
 android {
+    namespace = "com.tapptitude.persistence"
+
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {

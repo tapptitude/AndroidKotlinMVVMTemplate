@@ -3,6 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+android {
+    namespace = "com.tapptitude.core"
+}
+
 dependencies {
     api(project(":network"))
     api(project(":persistence"))

@@ -4,6 +4,10 @@ plugins {
     id("com.google.firebase.crashlytics")
 }
 
+android {
+    namespace = "com.tapptitude.crashlytics"
+}
+
 dependencies {
     implementation(project(":config"))
 

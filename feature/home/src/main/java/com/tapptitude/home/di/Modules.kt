@@ -1,6 +1,6 @@
-package com.tapptitude.featurehome.di
+package com.tapptitude.home.di
 
-import com.tapptitude.featurehome.presentation.HomeViewModel
+import com.tapptitude.home.presentation.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

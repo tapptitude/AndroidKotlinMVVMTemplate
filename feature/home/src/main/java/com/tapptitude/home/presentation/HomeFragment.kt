@@ -1,4 +1,4 @@
-package com.tapptitude.featurehome.presentation
+package com.tapptitude.home.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.tapptitude.config.AppConfig
 import com.tapptitude.core.util.viewBinding
-import com.tapptitude.featurehome.R
-import com.tapptitude.featurehome.databinding.FragmentHomeBinding
+import com.tapptitude.home.R
+import com.tapptitude.home.databinding.FragmentHomeBinding
 import com.tapptitude.imageloading.ImageLoader
 import com.tapptitude.session.model.LoggedIn
 import org.koin.android.ext.android.inject

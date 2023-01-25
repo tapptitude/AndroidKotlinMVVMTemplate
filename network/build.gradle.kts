@@ -4,6 +4,10 @@ plugins {
     alias(appLibs.plugins.ksp)
 }
 
+android {
+    namespace = "com.tapptitude.network"
+}
+
 dependencies {
     implementation(project(":config"))
     implementation(project(":session"))
