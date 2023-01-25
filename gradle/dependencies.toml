@@ -8,6 +8,7 @@ androidXCoreKtx = "1.9.0"
 androidXDatastore = "1.0.0"
 androidXLifecycle = "2.5.1"
 androidXNavigation = "2.5.3"
+composeBom = "2023.01.00"
 firebaseAnalytics = "21.2.0"
 firebaseCrashlytics = "18.3.1"
 firebaseGradle = "2.9.2"
@@ -28,8 +29,15 @@ timber = "5.0.1"
 # Top level dependencies
 androidToolsBuildGradle = { module = "com.android.tools.build:gradle", version.ref = "androidToolsBuildGradle" }
 androidXAppCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidXAppCompat" }
-androidXConstraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidXConstraintLayout" }
+androidXComposeAnimation = { module = "androidx.compose.animation:animation" }
 # Module level dependencies
+androidXComposeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidXComposeFoundation = { module = "androidx.compose.foundation:foundation" }
+androidXComposeMaterial = { module = "androidx.compose.material:material" }
+androidXComposeMaterial3 = { module = "androidx.compose.material3:material3" }
+androidXComposeRuntime = { module = "androidx.compose.runtime:runtime" }
+androidXComposeUi = { module = "androidx.compose.ui:ui" }
+androidXConstraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidXConstraintLayout" }
 androidXCoreKtx = { module = "androidx.core:core-ktx", version.ref = "androidXCoreKtx" }
 androidXDatastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidXDatastore" }
 androidXLifecycleCommon = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "androidXLifecycle" }

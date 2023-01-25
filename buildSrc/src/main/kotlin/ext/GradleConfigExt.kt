@@ -35,13 +35,11 @@ fun PluginContainer.addBasicConfiguration(project: Project) {
             if (extensions.findByType(BaseAppModuleExtension::class.java) != null) {
                 extensions
                     .getByType<BaseAppModuleExtension>()
-                    .addBaseCommonConfig()
             }
 
             if (extensions.findByType(InternalLibraryExtension::class.java) != null) {
                 extensions
                     .getByType<InternalLibraryExtension>()
-                    .addBaseCommonConfig()
             }
         }
     }
@@ -69,18 +67,4 @@ fun BaseExtension.addBaseCommonConfig() {
     }
 
     flavorDimensions(*DimensionsEnum.values().map { it.title }.toTypedArray())
-}
-
-fun BaseAppModuleExtension.addBaseCommonConfig() {
-    buildFeatures {
-        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
-        dataBinding = configuration.Android.DATA_BINDING_ENABLED
-    }
-}
-
-fun InternalLibraryExtension.addBaseCommonConfig() {
-    buildFeatures {
-        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
-        dataBinding = configuration.Android.DATA_BINDING_ENABLED
-    }
 }
