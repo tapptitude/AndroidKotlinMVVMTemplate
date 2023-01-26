@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("android.library")
 }
 
 android {
@@ -8,6 +7,8 @@ android {
 }
 
 dependencies {
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.glide)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.compose)
 }

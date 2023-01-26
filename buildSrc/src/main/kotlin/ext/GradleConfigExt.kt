@@ -1,70 +1,74 @@
 package ext
 
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.android.build.gradle.internal.dsl.InternalLibraryExtension
-import com.android.build.gradle.internal.plugins.AppPlugin
-import com.android.build.gradle.internal.plugins.LibraryPlugin
+import com.android.build.api.dsl.CommonExtension
 import configuration.DimensionsEnum
 import configuration.FlavorsEnum
 import org.gradle.api.Project
-import org.gradle.api.plugins.PluginContainer
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.plugins.ExtensionAware
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-fun Project.addBasicConfiguration() {
-    plugins.addBasicConfiguration(project)
+fun Project.addBaseCommonConfig(
+    commonExtension: CommonExtension<*, *, *, *>
+) {
+    commonExtension.apply {
+        compileSdk = configuration.Android.COMPILE_SDK_VERSION
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = configuration.Android.KOTLIN_LANGUAGE_LEVEL
+        defaultConfig {
+            minSdk = configuration.Android.MIN_SDK_VERSION
+        }
+
+        compileOptions {
+            sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+            targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+        }
+
+        kotlinOptions {
+            jvmTarget = configuration.Android.KOTLIN_LANGUAGE_LEVEL
+        }
     }
 }
 
-fun PluginContainer.addBasicConfiguration(project: Project) {
-    whenPluginAdded {
-        if (this is LibraryPlugin || this is AppPlugin) {
-            val extensions = project.extensions
+internal fun Project.addAndroidComposeConfig(
+    commonExtension: CommonExtension<*, *, *, *>,
+) {
+    val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
-            if (extensions.findByType(BaseExtension::class.java) != null) {
-                extensions
-                    .getByType<BaseExtension>()
-                    .addBaseCommonConfig()
-            }
+    commonExtension.apply {
+        buildFeatures {
+            compose = true
+        }
 
-            if (extensions.findByType(BaseAppModuleExtension::class.java) != null) {
-                extensions
-                    .getByType<BaseAppModuleExtension>()
-            }
+        composeOptions {
+            kotlinCompilerExtensionVersion = libs.findVersion("androidxComposeCompiler").get().toString()
+        }
 
-            if (extensions.findByType(InternalLibraryExtension::class.java) != null) {
-                extensions
-                    .getByType<InternalLibraryExtension>()
+        dependencies {
+            val bom = libs.findLibrary("androidx-compose-bom").get()
+            add("implementation", platform(bom))
+            add("androidTestImplementation", platform(bom))
+        }
+    }
+}
+
+fun Project.addFlavors(
+    commonExtension: CommonExtension<*, *, *, *>
+) {
+    commonExtension.apply {
+        flavorDimensions += DimensionsEnum.API.title
+
+        productFlavors {
+            FlavorsEnum.values().forEach { flavorData ->
+                create(flavorData.flavorName) {
+                    dimension = flavorData.flavorDimension
+                }
             }
         }
     }
 }
 
-fun BaseExtension.addBaseCommonConfig() {
-    setCompileSdkVersion(configuration.Android.COMPILE_SDK_VERSION)
-
-    defaultConfig {
-        minSdk = configuration.Android.MIN_SDK_VERSION
-        targetSdk = configuration.Android.TARGET_SDK_VERSION
-    }
-
-    compileOptions {
-        sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
-        targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
-    }
-
-    productFlavors {
-        FlavorsEnum.values().forEach { flavorData ->
-            create(flavorData.flavorName) {
-                dimension = flavorData.flavorDimension
-            }
-        }
-    }
-
-    flavorDimensions(*DimensionsEnum.values().map { it.title }.toTypedArray())
+fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

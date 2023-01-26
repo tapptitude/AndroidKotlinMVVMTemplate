@@ -1,26 +1,28 @@
-package plugin
-
-import com.android.build.gradle.AppExtension
-import com.android.build.gradle.internal.dsl.SigningConfig
+import com.android.build.api.dsl.ApkSigningConfig
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.SigningConfig
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
 
 class SigningConfigPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        val appExtension = project.extensions.findByType(AppExtension::class.java) ?: return
-
-        appExtension.createReleaseSigningConfig(project.rootDir.path)
+        project.extensions.configure<ApplicationExtension> {
+            createReleaseSigningConfig(project.rootDir.path)
+        }
     }
 
-    private fun AppExtension.createReleaseSigningConfig(projectPath: String) {
+    private fun ApplicationExtension.createReleaseSigningConfig(projectPath: String) {
         signingConfigs.create(SIGNATURE_RELEASE)
             .populateReleaseConfigIfAvailable(projectPath)
     }
 
     private fun SigningConfig.populateReleaseConfigIfAvailable(projectPath: String) {
+        if (this !is com.android.build.gradle.internal.dsl.SigningConfig) return
+
         val fullPropertiesFilePath = "$projectPath${File.separator}$PROPERTIES_FILE_PATH"
         val propertiesFile = File(fullPropertiesFilePath)
 

@@ -2,20 +2,28 @@ package com.tapptitude.template.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.NavHostFragment
 import com.tapptitude.template.R
+import com.tapptitude.ui.theme.AppTheme
 
 class HostActivity : AppCompatActivity() {
     private val navController: NavController by lazy { findNavController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_host)
 
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        setContent {
+            AppTheme {
+
+            }
+        }
         navigateHome()
     }
 

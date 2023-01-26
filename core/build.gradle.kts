@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("android.library")
 }
 
 android {
@@ -11,9 +10,8 @@ dependencies {
     api(project(":network"))
     api(project(":persistence"))
 
-    implementation(appLibs.androidXCoreKtx)
-    implementation(appLibs.androidXLifecycleCommon)
-    implementation(appLibs.kotlinXCoroutines)
-
-    implementation(appLibs.bundles.koinBundle)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }

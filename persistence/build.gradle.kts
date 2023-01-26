@@ -1,7 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    alias(appLibs.plugins.ksp)
+    id("android.library")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -21,7 +20,9 @@ android {
 }
 
 dependencies {
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.bundles.roomBundle)
-    ksp(appLibs.roomKsp)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 }

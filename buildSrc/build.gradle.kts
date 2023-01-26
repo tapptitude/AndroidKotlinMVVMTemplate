@@ -2,22 +2,37 @@ plugins {
     `kotlin-dsl`
 }
 
-repositories {
-    google()
-    gradlePluginPortal()
-    mavenCentral()
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-kotlin {
-    version = JavaVersion.VERSION_11.toString()
+dependencies {
+    implementation(libs.android.gradlePlugin)
+    implementation(libs.kotlin.gradlePlugin)
 }
 
-dependencies {
-    implementation(appLibs.androidToolsBuildGradle)
-    implementation(appLibs.kotlinGradlePlugin)
+gradlePlugin {
+    plugins {
+        register("androidApplication") {
+            id = "android.application"
+            implementationClass = "AppConventionPlugin"
+        }
+        register("androidApplicationCompose") {
+            id = "android.application.compose"
+            implementationClass = "AppComposeConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "android.library"
+            implementationClass = "LibraryConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "android.library.compose"
+            implementationClass = "LibraryComposeConventionPlugin"
+        }
+        register("signingConfig") {
+            id = "android.signing.config"
+            implementationClass = "SigningConfigPlugin"
+        }
+    }
 }

@@ -1,5 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import ext.addBasicConfiguration
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -9,28 +8,16 @@ buildscript {
     }
 
     dependencies {
-        classpath(appLibs.androidToolsBuildGradle)
-        classpath(appLibs.kotlinGradlePlugin)
-        classpath(appLibs.navigationSafeArgs)
-        classpath(appLibs.googleServices)
-        classpath(appLibs.firebaseGradle)
+        classpath(libs.android.gradlePlugin)
+        classpath(libs.kotlin.gradlePlugin)
+        classpath(libs.google.services)
+        classpath(libs.firebase.gradle)
     }
 }
 
 plugins {
-    id("com.github.ben-manes.versions") version "0.43.0"
-    id("nl.littlerobots.version-catalog-update") version "0.7.0"
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-subprojects {
-    addBasicConfiguration()
+    alias(libs.plugins.versions)
+    alias(libs.plugins.version.catalog.update)
 }
 
 tasks.register("clean", Delete::class) {
@@ -46,21 +33,6 @@ tasks.withType<DependencyUpdatesTask> {
 
 tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
     outputFormatter = "html"
-}
-
-versionCatalogUpdate {
-    versionCatalogs {
-        create("appLibs") {
-            catalogFile.set(file("gradle/dependencies.toml"))
-        }
-        create("testLibs") {
-            catalogFile.set(file("gradle/testDependencies.toml"))
-        }
-
-        create("androidTestLibs") {
-            catalogFile.set(file("gradle/androidTestDependencies.toml"))
-        }
-    }
 }
 
 /**
