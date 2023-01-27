@@ -30,6 +30,10 @@ gradlePlugin {
             id = "android.library.compose"
             implementationClass = "LibraryComposeConventionPlugin"
         }
+        register("androidFeature") {
+            id = "android.feature"
+            implementationClass = "FeatureConventionPlugin"
+        }
         register("signingConfig") {
             id = "android.signing.config"
             implementationClass = "SigningConfigPlugin"

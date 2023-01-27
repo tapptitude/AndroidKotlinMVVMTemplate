@@ -8,38 +8,39 @@ import com.tapptitude.core.model.Image
 import com.tapptitude.core.usecase.LoadImageUseCase
 import com.tapptitude.session.SessionManager
 import com.tapptitude.session.model.LoggedIn
+import com.tapptitude.session.model.LoggedOut
 import com.tapptitude.session.model.LoginState
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val loadImageUseCase: LoadImageUseCase,
     private val sessionManager: SessionManager
 ) : ViewModel() {
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _imageData = MutableLiveData<Image>()
-    val imageData: LiveData<Image> = _imageData
-
-    private val _loginState = MutableLiveData<LoginState>()
-    val loginState: LiveData<LoginState> = _loginState
+    private val _state = MutableStateFlow(HomeState(isLoading = false, loginState = LoggedOut(), image = null))
+    val state: StateFlow<HomeState>
+        get() = _state
 
     init {
+        loadRandomImage()
         observeSessionStateChanges()
     }
 
-    fun loadRandomImage() {
-        _isLoading.value = true
+    private fun loadRandomImage() {
+        _state.update { _state.value.copy(isLoading = true) }
 
         viewModelScope.launch {
-            _imageData.value = loadImageUseCase.invoke()
-            _isLoading.value = false
+            val image = loadImageUseCase.invoke()
+            _state.update { _state.value.copy(isLoading = false, image = image) }
         }
     }
 
     fun toggleLoginMode() {
-        val currentLoginState = loginState.value
+        val currentLoginState = _state.value.loginState
 
         if (currentLoginState is LoggedIn) {
             doLogout()
@@ -61,7 +62,7 @@ class HomeViewModel(
     private fun observeSessionStateChanges() {
         viewModelScope.launch(Dispatchers.IO) {
             sessionManager.currentLoginStateFlow.collect { loginState ->
-                _loginState.postValue(loginState)
+                _state.update { _state.value.copy(loginState = loginState) }
             }
         }
     }

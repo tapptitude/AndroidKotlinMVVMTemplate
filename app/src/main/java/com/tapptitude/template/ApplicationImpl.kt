@@ -4,7 +4,6 @@ import android.app.Application
 import com.tapptitude.core.di.coreModule
 import com.tapptitude.crashlytics.di.crashlyticsModule
 import com.tapptitude.home.di.homeModules
-import com.tapptitude.imageloading.di.imageLoaderModule
 import com.tapptitude.logger.di.loggerModule
 import com.tapptitude.network.di.networkModule
 import com.tapptitude.persistence.di.databaseModule
@@ -26,7 +25,6 @@ class ApplicationImpl : Application() {
                 networkModule,
                 coreModule,
                 homeModules,
-                imageLoaderModule,
                 loggerModule,
                 sessionModule,
                 crashlyticsModule,
