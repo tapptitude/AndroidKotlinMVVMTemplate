@@ -17,7 +17,6 @@ buildscript {
 
 plugins {
     alias(libs.plugins.versions)
-    alias(libs.plugins.version.catalog.update)
 }
 
 tasks.register("clean", Delete::class) {
@@ -29,9 +28,6 @@ tasks.withType<DependencyUpdatesTask> {
         isNonStable(candidate.version)
     }
     gradleReleaseChannel = "current"
-}
-
-tasks.named<DependencyUpdatesTask>("dependencyUpdates").configure {
     outputFormatter = "html"
 }
 
