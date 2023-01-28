@@ -1,5 +1,6 @@
 package com.tapptitude.network.interceptor
 
+import androidx.annotation.VisibleForTesting
 import com.tapptitude.session.SessionManager
 import com.tapptitude.session.model.LoggedIn
 import okhttp3.Interceptor
@@ -21,6 +22,7 @@ internal class SessionInterceptor(private val sessionManager: SessionManager) : 
     }
 
     companion object {
-        private const val HEADER_AUTHORIZATION = "Authorization"
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+        internal const val HEADER_AUTHORIZATION = "Authorization"
     }
 }
