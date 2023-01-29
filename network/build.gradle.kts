@@ -17,4 +17,5 @@ dependencies {
     ksp(appLibs.moshiKsp)
 
     testImplementation(testLibs.bundles.testBundle)
+    testImplementation(testLibs.mockWebServer)
 }
