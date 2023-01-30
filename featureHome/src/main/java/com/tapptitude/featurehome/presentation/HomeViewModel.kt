@@ -16,7 +16,7 @@ class HomeViewModel(
     private val loadImageUseCase: LoadImageUseCase,
     private val sessionManager: SessionManager
 ) : ViewModel() {
-    private val _isLoading = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
     private val _imageData = MutableLiveData<Image>()
