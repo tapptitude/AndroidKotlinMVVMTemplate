@@ -8,6 +8,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -45,7 +47,7 @@ internal class SessionInterceptorTest {
         val mockUserId = "mocked_user_id"
         val mockedAccessToken = "mocked_access_token"
 
-        // We assume
+        // we logged in the user
         sessionManager.onLoggedIn(accessToken = mockedAccessToken, userId = mockUserId)
 
         val request = Request.Builder()
@@ -57,10 +59,30 @@ internal class SessionInterceptorTest {
 
         val receivedRequest = mockWebServer.takeRequest()
 
-        assert(receivedRequest.headers.contains(
-            SessionInterceptor.HEADER_AUTHORIZATION to mockedAccessToken
-        )) {
-            "The Authorization token is not present!"
-        }
+        assertTrue(
+            "The Authorization token is not present!",
+            receivedRequest.headers.contains(
+                SessionInterceptor.HEADER_AUTHORIZATION to mockedAccessToken
+            )
+        )
+    }
+
+    @Test
+    fun `assert when logged out the authorization header is NOT set`() {
+        sessionManager.onLoggedOut(null)
+
+        val request = Request.Builder()
+            .url(mockWebServer.url("test"))
+            .get()
+            .build()
+
+        okHttpClient.newCall(request).enqueue(IgnoredCallback)
+
+        val receivedRequest = mockWebServer.takeRequest()
+
+        assertFalse(
+            "The authorization token should not be set",
+            receivedRequest.headers.any { it.first == SessionInterceptor.HEADER_AUTHORIZATION }
+        )
     }
 }
