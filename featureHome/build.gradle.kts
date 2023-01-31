@@ -20,4 +20,7 @@ dependencies {
     implementation(appLibs.bundles.androidXLifecycleBundle)
     implementation(appLibs.bundles.androidXNavigationBundle)
     implementation(appLibs.bundles.koinBundle)
+
+    testImplementation(testLibs.kotlinXCoroutines)
+    testImplementation(testLibs.bundles.testBundle)
 }

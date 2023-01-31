@@ -15,4 +15,7 @@ dependencies {
     implementation(appLibs.kotlinXCoroutines)
     implementation(appLibs.moshi)
     ksp(appLibs.moshiKsp)
+
+    testImplementation(testLibs.bundles.testBundle)
+    testImplementation(testLibs.mockWebServer)
 }
