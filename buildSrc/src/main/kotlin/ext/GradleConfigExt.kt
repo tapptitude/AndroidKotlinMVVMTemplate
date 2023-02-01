@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-fun Project.addBaseCommonConfig(
+internal fun Project.addBaseCommonConfig(
     commonExtension: CommonExtension<*, *, *, *>
 ) {
     commonExtension.apply {
@@ -53,7 +53,7 @@ internal fun Project.addAndroidComposeConfig(
     }
 }
 
-fun Project.addFlavors(
+internal fun Project.addFlavors(
     commonExtension: CommonExtension<*, *, *, *>
 ) {
     commonExtension.apply {
@@ -69,6 +69,6 @@ fun Project.addFlavors(
     }
 }
 
-fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

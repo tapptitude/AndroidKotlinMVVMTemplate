@@ -1,15 +1,11 @@
 package com.tapptitude.home.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tapptitude.core.model.Image
 import com.tapptitude.core.usecase.LoadImageUseCase
 import com.tapptitude.session.SessionManager
 import com.tapptitude.session.model.LoggedIn
 import com.tapptitude.session.model.LoggedOut
-import com.tapptitude.session.model.LoginState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -31,11 +27,11 @@ class HomeViewModel(
     }
 
     private fun loadRandomImage() {
-        _state.update { _state.value.copy(isLoading = true) }
+        _state.update { it.copy(isLoading = true) }
 
         viewModelScope.launch {
             val image = loadImageUseCase.invoke()
-            _state.update { _state.value.copy(isLoading = false, image = image) }
+            _state.update { it.copy(isLoading = false, image = image) }
         }
     }
 
@@ -62,7 +58,7 @@ class HomeViewModel(
     private fun observeSessionStateChanges() {
         viewModelScope.launch(Dispatchers.IO) {
             sessionManager.currentLoginStateFlow.collect { loginState ->
-                _state.update { _state.value.copy(loginState = loginState) }
+                _state.update { it.copy(loginState = loginState) }
             }
         }
     }
