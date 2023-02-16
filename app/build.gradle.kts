@@ -32,6 +32,7 @@ android {
 dependencies {
     api(project(":featureHome"))
     api(project(":crashlytics"))
+    implementation(project(":common"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXAppCompat)

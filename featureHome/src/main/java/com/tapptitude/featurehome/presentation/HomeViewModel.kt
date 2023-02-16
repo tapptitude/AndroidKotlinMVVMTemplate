@@ -4,15 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tapptitude.common.dispatcherProvider.DispatcherProvider
 import com.tapptitude.core.model.Image
 import com.tapptitude.core.usecase.LoadImageUseCase
 import com.tapptitude.session.SessionManager
 import com.tapptitude.session.model.LoggedIn
 import com.tapptitude.session.model.LoginState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
+    private val dispatcherProvider: DispatcherProvider,
     private val loadImageUseCase: LoadImageUseCase,
     private val sessionManager: SessionManager
 ) : ViewModel() {
@@ -32,7 +33,7 @@ class HomeViewModel(
     fun loadRandomImage() {
         _isLoading.value = true
 
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcherProvider.main) {
             _imageData.value = loadImageUseCase.invoke()
             _isLoading.value = false
         }
@@ -59,7 +60,7 @@ class HomeViewModel(
     }
 
     private fun observeSessionStateChanges() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcherProvider.io) {
             sessionManager.currentLoginStateFlow.collect { loginState ->
                 _loginState.postValue(loginState)
             }

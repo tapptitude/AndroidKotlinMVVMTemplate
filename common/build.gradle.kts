@@ -3,11 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-dependencies {
-    implementation(project(":common"))
+android {
+    namespace = "com.tapptitude.common"
+}
 
-    implementation(appLibs.androidXCoreKtx)
-    implementation(appLibs.androidXDatastore)
+dependencies {
     implementation(appLibs.kotlinXCoroutines)
     implementation(appLibs.bundles.koinBundle)
 }

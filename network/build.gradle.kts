@@ -7,6 +7,7 @@ plugins {
 dependencies {
     implementation(project(":config"))
     implementation(project(":session"))
+    implementation(project(":common"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.bundles.okhttpBundle)

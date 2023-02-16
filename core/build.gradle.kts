@@ -6,6 +6,7 @@ plugins {
 dependencies {
     api(project(":network"))
     api(project(":persistence"))
+    implementation(project(":common"))
 
     implementation(appLibs.androidXCoreKtx)
     implementation(appLibs.androidXLifecycleCommon)
