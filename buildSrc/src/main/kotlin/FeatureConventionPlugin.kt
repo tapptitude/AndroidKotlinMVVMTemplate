@@ -30,6 +30,8 @@ class FeatureConventionPlugin : Plugin<Project> {
             add("implementation", libs.findLibrary("koin.core").get())
             add("implementation", libs.findLibrary("koin.android").get())
             add("implementation", libs.findLibrary("koin.androidx.compose").get())
+
+            add("lintChecks", libs.findLibrary("compose.lintChecks").get())
         }
     }
 }
