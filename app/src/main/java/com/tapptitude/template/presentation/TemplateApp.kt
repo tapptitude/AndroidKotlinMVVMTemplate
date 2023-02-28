@@ -29,11 +29,7 @@ fun TemplateApp() {
                 .fillMaxSize()
                 .padding(padding)
                 .consumedWindowInsets(padding)
-                .windowInsetsPadding(
-                    WindowInsets.safeDrawing.only(
-                        WindowInsetsSides.Horizontal,
-                    ),
-                ),
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
         ) {
             NavHost(
                 navController = appNavController,
