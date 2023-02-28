@@ -7,18 +7,9 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    versionCatalogs {
-        create("appLibs") {
-            from(files("gradle/dependencies.toml"))
-        }
-
-        create("testLibs") {
-            from(files("gradle/testDependencies.toml"))
-        }
-
-        create("androidTestLibs") {
-            from(files("gradle/androidTestDependencies.toml"))
-        }
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 
@@ -28,10 +19,11 @@ include(":app")
 include(":network")
 include(":config")
 include(":core")
-include(":featureHome")
-include(":imageLoading")
+include(":foundation")
+include(":foundation:ui")
+include(":feature")
+include(":feature:home")
 include(":logger")
 include(":session")
-include(":uiCommon")
 include(":crashlytics")
 include(":persistence")

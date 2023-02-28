@@ -12,6 +12,12 @@
           "package_name": "com.tapptitude.template"
         }
       },
+      "client_info": {
+        "mobilesdk_app_id": "1:581089795829:android:bbe03b18c9b29f1d73efbc",
+        "android_client_info": {
+          "package_name": "com.tapptitude.template.debug"
+        }
+      },
       "oauth_client": [
         {
           "client_id": "581089795829-h29agic9up0tuergaogmmr7e3sfg3nr8.apps.googleusercontent.com",

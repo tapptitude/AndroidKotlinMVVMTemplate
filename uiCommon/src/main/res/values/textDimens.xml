@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="text_alpha">12sp</dimen>
-    <dimen name="text_beta">14sp</dimen>
-    <dimen name="text_gamma">16sp</dimen>
-    <dimen name="text_delta">20sp</dimen>
-    <dimen name="text_epsilon">24sp</dimen>
-</resources>
