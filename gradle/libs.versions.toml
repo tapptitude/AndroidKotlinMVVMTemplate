@@ -83,7 +83,6 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-ktlint-gradlePlugin = { group = "org.jlleitschuh.gradle", name = "ktlint-gradle", version.ref = "ktlint" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -92,3 +91,4 @@ firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 versions = { id = "com.github.ben-manes.versions", version = "0.44.0" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

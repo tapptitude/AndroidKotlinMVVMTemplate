@@ -17,6 +17,7 @@ buildscript {
 
 plugins {
     alias(libs.plugins.versions)
+    alias(libs.plugins.ktlint)
 }
 
 tasks.register("clean", Delete::class) {
