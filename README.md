@@ -1,6 +1,6 @@
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.21-blue.svg)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-7.4-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
-[![API](https://img.shields.io/badge/API-23%2B-blue.svg)](https://android-arsenal.com/api?level=23)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.8.0-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-7.6-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![API](https://img.shields.io/badge/API-26%2B-blue.svg)](https://android-arsenal.com/api?level=26)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
 # Tapptitude's Android Template
@@ -14,8 +14,8 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 - Application signing, flavors & dimensions setup done
   through  `buildSrc` [(Kotlin DSL)](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
 - Supports `dev` & `production` flavors out of the box
-- Lays the foundation for independent core business & presentation modules [`network`](#network), [`logger`](#logger),
-  [`imageLoading`](#imageloading), [`persistence`](#persistence), [`session`](#session)
+- Lays the foundation for independent core business & presentation modules [`network`](#network), [`logger`](#logger)
+  , [`persistence`](#persistence), [`session`](#session)
 - Dependency updates management is done through [`gradle-versions`](https://github.com/ben-manes/gradle-versions-plugin)
 
 ## Quick setup
@@ -25,20 +25,17 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 2. Update package name in [`Android`](buildSrc/src/main/kotlin/configuration/Android.kt)
    class and in [`AndroidManifest.xml`](app/src/main/AndroidManifest.xml).
 3. Update signing configuration available in the Gradle DSL
-   plugin [`SigningConfigPlugin`](buildSrc/src/main/kotlin/plugin/SigningConfigPlugin.kt)
+   plugin [`SigningConfigPlugin`](buildSrc/src/main/kotlin/SigningConfigPlugin.kt)
 
 ## Gradle structure
 
 The template uses Gradle Kotlin DSL for build setup.
 
-Dependencies are organized into 3 `toml` configuration files:
+Dependencies are organized into a `toml` configuration file - [`libs.versions.toml`](gradle/libs.versions.toml).
 
-1. [`dependencies.toml`](gradle/dependencies.toml) - contains app & module production dependencies
-2. [`testDependencies.toml`](gradle/testDependencies.toml) - contains testing dependencies
-2. [`androidTestDependencies.toml`](gradle/androidTestDependencies.toml) - contains instrumentation testing dependencies
-
-Common module setup is done in [`GradleConfigExt`](buildSrc/src/main/kotlin/ext/GradleConfigExt.kt) and it is applied in
-all `subprojects` of the whole project.
+Common module setup is done using [convention plugins](buildSrc/src/main/kotlin). The approach is based
+on [https://github.com/android/nowinandroid](https://github.com/android/nowinandroid).
+Modules should choose the plugin they need and specify it in the `plugins { }` section of the `build.gradle.kts`.
 
 Android specific configuration is available in the [`Android`](buildSrc/src/main/kotlin/configuration/Android.kt)
 class.
@@ -63,12 +60,12 @@ This template adheres to the following architectural principles:
 
 ```mermaid
     graph TD;
-        app-->featureHome;
-        featureHome-->core;
-        featureHome-->session;
-        featureHome-->imageLoading;
-        featureHome-->logger;
-        featureHome-->config;
+        app-->feature:home;
+        feature:home-->core;
+        feature:home-->session;
+        feature:home-->logger;
+        feature:home-->config;
+        feature:home-->foundation:ui;
         core-->network;
         core-->persistence;
         network-->session;
@@ -104,7 +101,7 @@ implementation and [Moshi](https://github.com/square/moshi) for `json` parsing.
 ### persistence
 
 Provides a place to implement everything that's database caching related. It handles the logic for creating and migrating the database.
-It also exposes a `Dao` for each database table, so that the `core` module can perform actions on each table. It uses 
+It also exposes a `Dao` for each database table, so that the `core` module can perform actions on each table. It uses
 [Room](https://developer.android.com/training/data-storage/room) as the database implementation.
 
 ### session
@@ -118,12 +115,6 @@ storing key-value pairs asynchronously.
 
 Provides an implementation of basic console logging capabilities that can be easily extended to write to a file or any
 other use case. It uses [Timber](https://github.com/JakeWharton/timber) in the underlying implementation.
-
-### imageLoading
-
-Provides an image loading solution for the presentation layer. It uses [Glide](https://github.com/bumptech/glide) for
-the image loading side and provides a streamlined helper class that can be easily extended. Image loading logic provider
-can be easily switched due to this abstraction layer.
 
 ### config
 

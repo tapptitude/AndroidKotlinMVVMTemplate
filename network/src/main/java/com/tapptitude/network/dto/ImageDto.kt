@@ -5,6 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ImageDto(
-    @Json(name = "image")
+    @Json(name = "url")
     val imageUrl: String? = null
 )

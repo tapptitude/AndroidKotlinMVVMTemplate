@@ -1,6 +1,9 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("android.library")
+}
+
+android {
+    namespace = "com.tapptitude.core"
 }
 
 dependencies {
@@ -8,9 +11,8 @@ dependencies {
     api(project(":persistence"))
     implementation(project(":common"))
 
-    implementation(appLibs.androidXCoreKtx)
-    implementation(appLibs.androidXLifecycleCommon)
-    implementation(appLibs.kotlinXCoroutines)
-
-    implementation(appLibs.bundles.koinBundle)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }

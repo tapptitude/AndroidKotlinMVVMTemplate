@@ -1,6 +1,5 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("android.library")
 }
 
 android {
@@ -8,6 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(appLibs.kotlinXCoroutines)
-    implementation(appLibs.bundles.koinBundle)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }
