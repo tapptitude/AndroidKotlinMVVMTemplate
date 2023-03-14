@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation(project(":crashlytics"))
     implementation(project(":feature:home"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
