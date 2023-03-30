@@ -44,10 +44,7 @@ internal fun HomeRoute(
         image = state.image,
         loginState = state.loginState,
         onButtonClick = viewModel::toggleLoginMode,
-        modifier = modifier
-
-
-
+        modifier = modifier,
     )
 }
 
