@@ -3,15 +3,10 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.core"
+    namespace = "com.tapptitude.common"
 }
 
 dependencies {
-    api(project(":network"))
-    api(project(":persistence"))
-    implementation(project(":common"))
-
-    implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
