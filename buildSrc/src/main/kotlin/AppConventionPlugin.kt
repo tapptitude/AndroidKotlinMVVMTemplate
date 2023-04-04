@@ -14,7 +14,7 @@ class AppConventionPlugin : Plugin<Project> {
         target.extensions.configure<ApplicationExtension> {
             target.addBaseCommonConfig(this)
             defaultConfig.targetSdk = Android.TARGET_SDK_VERSION
-            target.addFlavors(this)
+            addFlavors()
         }
     }
 }

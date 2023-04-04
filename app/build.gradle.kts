@@ -1,8 +1,8 @@
 plugins {
     id("android.application")
     id("android.application.compose")
-    id(libs.plugins.firebase.crashlytics.get().pluginId)
-    id(libs.plugins.google.services.get().pluginId)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.google.services)
     id("android.signing.config")
 }
 
