@@ -1,4 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Splash Screen theme. -->
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#FFD0BCFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.AndroidMVVMKotlinTemplate</item>
+
+        <!-- Status bar and Nav bar configs -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="Theme.AndroidMVVMKotlinTemplate" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
