@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.common"
+    namespace = "com.tapptitude.template.common"
 }
 
 dependencies {

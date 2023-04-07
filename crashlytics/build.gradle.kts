@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.crashlytics"
+    namespace = "com.tapptitude.template.crashlytics"
 }
 
 dependencies {

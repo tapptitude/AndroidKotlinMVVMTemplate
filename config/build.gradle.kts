@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.config"
+    namespace = "com.tapptitude.template.config"
 
     productFlavors {
         configuration.FlavorsEnum.values().forEach { flavorData ->

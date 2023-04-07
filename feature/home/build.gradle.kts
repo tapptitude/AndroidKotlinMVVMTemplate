@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.feature.home"
+    namespace = "com.tapptitude.template.feature.home"
 }
 
 dependencies {

@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.logger"
+    namespace = "com.tapptitude.template.logger"
 }
 
 dependencies {

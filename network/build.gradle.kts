@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.network"
+    namespace = "com.tapptitude.template.network"
 }
 
 dependencies {
