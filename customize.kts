@@ -1,18 +1,12 @@
 import java.io.File
-import kotlin.system.exitProcess
 
 println("Type in package name:")
-val packageName = readLine()
+val packageName = (readLine() ?: throw Exception("Missing package name")).lowercase()
 println("Package name is $packageName")
 
 println("Type in app name:")
-val appName = readLine()
+val appName = readLine() ?: throw Exception("Missing app name")
 println("App name is $appName")
-
-if (packageName == null || appName == null) {
-    println("Missing arguments. Please specify both packageName and appName. Package name introduced $packageName. App name introduced $appName")
-    exitProcess(0)
-}
 
 val subDir = packageName.replace(".", "/")
 
@@ -20,35 +14,30 @@ println("Moving subdir to $subDir")
 
 File(".").walkTopDown()
     .filter {
-        it.isDirectory && (it.path.endsWith("/src/androidTest") || it.path.endsWith("/src/main") || it.path.endsWith("/src/test") ||
-                // move the BuildConfig files too so that the app can run
-                it.path.endsWith("/build/generated/source/buildConfig/dev/debug") ||
-                it.path.endsWith("/build/generated/source/buildConfig/androidTest/dev/debug"))
+        it.isDirectory && (it.path.endsWith("/src/androidTest") || it.path.endsWith("/src/main") || it.path.endsWith("/src/test"))
     }
-    .forEach {
-        val templateDir = File("${it.path}/java/com/tapp")
-        templateDir.listFiles()?.forEach {
-            val javaDir = File("${it.path}/java/$subDir")
+    .forEach { dir ->
+        val templateDir = File("${dir.path}/java/com/tapptitude/template")
+        templateDir.listFiles()?.forEach { file ->
+            val javaDir = File("${dir.path}/java/$subDir")
             println("Creating directory: ${javaDir.path}")
             javaDir.mkdirs()
             println("Moving files to: ${javaDir.path}")
-            it.renameTo(File(javaDir, it.name))
+            file.renameTo(File(javaDir, file.name))
         }
         println("Removing old directory: ${templateDir.path}")
         templateDir.deleteRecursively()
     }
 
-println("Remaming packages and imports to $packageName")
+println("Renaming any occurances of com.tapptitude.template to $packageName")
 File(".").walkTopDown()
-    .filter { it.isFile && (it.name.endsWith(".kt") || it.name.endsWith(".kts")) }
+    .filter { it.isFile && (it.name.endsWith(".kt") || it.name.endsWith(".kts") || it.name.endsWith(".json")) }
     .forEach {
         val tempFile = File.createTempFile(it.name, null)
         val writer = tempFile.bufferedWriter()
         it.bufferedReader().lines().forEach { line ->
             writer.write(
-                line.replace("package com.tapptitude", "package $packageName")
-                    .replace("import com.tapptitude", "import $packageName")
-                    .replace("com.tapptitude.template", "$packageName.app")
+                line.replace("com.tapptitude.template", "$packageName")
             )
             writer.newLine()
         }
@@ -58,15 +47,15 @@ File(".").walkTopDown()
     }
 
 
-println("Remaming app to $appName")
-File(".").walkTopDown().filter { it.name == "settings.gradle.kts" || it.extension == "xml" }
+println("Renaming AndroidMVVMKotlinTemplate app to $appName")
+File(".").walkTopDown()
+    .filter { it.name == "settings.gradle.kts" || it.extension == "xml" }
     .forEach {
         val tempFile = File.createTempFile(it.name, null)
         val writer = tempFile.bufferedWriter()
         it.bufferedReader().lines().forEach { line ->
             writer.write(
-                line.replace("Tapptitude Template", appName)
-                    .replace("Android MVVM Kotlin Template", appName)
+                line.replace("AndroidMVVMKotlinTemplate", appName)
             )
             writer.newLine()
         }
@@ -85,8 +74,8 @@ listOf("LICENSE", "README.md", "customize.kts").forEach {
 }
 
 println("Do you also want to delete the .git folder? (This will delete all git history / configuration): [y/n]")
-val deleteGit = readline()
-if (deleteGit = "y") {
+val deleteGit = readLine()
+if (deleteGit?.contains("y", ignoreCase = true) == true) {
     File(".git").deleteRecursively()
 }
 
