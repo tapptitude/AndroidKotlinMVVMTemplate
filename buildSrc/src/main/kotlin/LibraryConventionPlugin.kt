@@ -14,7 +14,7 @@ class LibraryConventionPlugin : Plugin<Project> {
         target.extensions.configure<LibraryExtension> {
             target.addBaseCommonConfig(this)
             defaultConfig.targetSdk = Android.TARGET_SDK_VERSION
-            target.addFlavors(this)
+            addFlavors()
         }
     }
 }
