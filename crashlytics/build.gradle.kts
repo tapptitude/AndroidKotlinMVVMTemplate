@@ -1,6 +1,6 @@
 plugins {
     id("android.library")
-    id(libs.plugins.firebase.crashlytics.get().pluginId)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
