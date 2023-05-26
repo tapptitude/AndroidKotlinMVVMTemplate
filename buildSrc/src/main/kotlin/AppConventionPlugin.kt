@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.ApplicationExtension
 import configuration.Android
+import configuration.Android.KOTLIN_JVM_TOOLCHAIN_VERSION
 import ext.addBaseCommonConfig
 import ext.addFlavors
 import org.gradle.api.Plugin
@@ -19,7 +20,7 @@ class AppConventionPlugin : Plugin<Project> {
         }
 
         target.extensions.configure<KotlinAndroidProjectExtension> {
-            jvmToolchain(17)
+            jvmToolchain(KOTLIN_JVM_TOOLCHAIN_VERSION)
         }
     }
 }
