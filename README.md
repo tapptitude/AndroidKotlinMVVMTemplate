@@ -21,10 +21,12 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 ## Quick setup
 
 1. Click the [`Use this template`](https://github.com/tapptitude/AndroidKotlinMVVMTemplate/generate) button on this page
-   to generate your own project using this template.
-2. Update package name in [`Android`](buildSrc/src/main/kotlin/configuration/Android.kt)
-   class and in [`AndroidManifest.xml`](app/src/main/AndroidManifest.xml).
-3. Update signing configuration available in the Gradle DSL
+   to generate your own project using this template or clone the project.
+2. Open the project in Android Studio.
+3. Run the [customize](customize.kts) Kotlin script by right clicking the file and select `Run 'customize.kts`. The script will prompt
+   you to input the package and app name.
+4. Sync the project.
+5. Update signing configuration available in the Gradle DSL
    plugin [`SigningConfigPlugin`](buildSrc/src/main/kotlin/SigningConfigPlugin.kt)
 
 ## Gradle structure
