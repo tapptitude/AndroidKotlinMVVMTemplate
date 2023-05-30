@@ -41,5 +41,4 @@ class CrashlyticsFirebase : Crashlytics {
     override fun submitCrash(throwable: Throwable) {
         FirebaseCrashlytics.getInstance().recordException(throwable)
     }
-
 }

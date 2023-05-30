@@ -44,7 +44,7 @@ internal fun HomeRoute(
         image = state.image,
         loginState = state.loginState,
         onButtonClick = viewModel::toggleLoginMode,
-        modifier = modifier,
+        modifier = modifier
     )
 }
 
@@ -54,7 +54,7 @@ internal fun HomeScreen(
     image: Image?,
     loginState: LoginState,
     onButtonClick: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     if (!isLoading) {
         Column(
@@ -97,11 +97,11 @@ internal fun HomeScreen(
     AnimatedVisibility(
         visible = isLoading,
         enter = slideInVertically(
-            initialOffsetY = { fullHeight -> -fullHeight },
+            initialOffsetY = { fullHeight -> -fullHeight }
         ) + fadeIn(),
         exit = slideOutVertically(
-            targetOffsetY = { fullHeight -> -fullHeight },
-        ) + fadeOut(),
+            targetOffsetY = { fullHeight -> -fullHeight }
+        ) + fadeOut()
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
