@@ -10,12 +10,12 @@ buildscript {
     dependencies {
         classpath(libs.android.gradlePlugin)
         classpath(libs.kotlin.gradlePlugin)
-        classpath(libs.google.services)
-        classpath(libs.firebase.gradle)
     }
 }
 
 plugins {
+    alias(libs.plugins.firebase.crashlytics) apply false
+    alias(libs.plugins.google.services) apply false
     alias(libs.plugins.versions)
     alias(libs.plugins.ktlint)
 }

@@ -1,33 +1,34 @@
 package ext
 
 import com.android.build.api.dsl.CommonExtension
-import configuration.DimensionsEnum
+import configuration.Android.COMPILE_SDK_VERSION
+import configuration.Android.JAVA_LANGUAGE_LEVEL
+import configuration.Android.KOTLIN_LANGUAGE_LEVEL
+import configuration.Android.MIN_SDK_VERSION
+import configuration.DimensionsEnum.API
 import configuration.FlavorsEnum
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 internal fun Project.addBaseCommonConfig(
     commonExtension: CommonExtension<*, *, *, *>
 ) {
     commonExtension.apply {
-        compileSdk = configuration.Android.COMPILE_SDK_VERSION
+        compileSdk = COMPILE_SDK_VERSION
 
         defaultConfig {
-            minSdk = configuration.Android.MIN_SDK_VERSION
+            minSdk = MIN_SDK_VERSION
         }
 
         compileOptions {
-            sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
-            targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+            sourceCompatibility = JAVA_LANGUAGE_LEVEL
+            targetCompatibility = JAVA_LANGUAGE_LEVEL
         }
 
-        kotlinOptions {
-            jvmTarget = configuration.Android.KOTLIN_LANGUAGE_LEVEL
-        }
+        kotlinExtension.jvmToolchain(KOTLIN_LANGUAGE_LEVEL)
     }
 }
 
@@ -53,22 +54,14 @@ internal fun Project.addAndroidComposeConfig(
     }
 }
 
-internal fun Project.addFlavors(
-    commonExtension: CommonExtension<*, *, *, *>
-) {
-    commonExtension.apply {
-        flavorDimensions += DimensionsEnum.API.title
+internal fun CommonExtension<*, *, *, *>.addFlavors(): CommonExtension<*, *, *, *> = apply {
+    flavorDimensions += API.title
 
-        productFlavors {
-            FlavorsEnum.values().forEach { flavorData ->
-                create(flavorData.flavorName) {
-                    dimension = flavorData.flavorDimension
-                }
+    productFlavors {
+        FlavorsEnum.values().forEach { flavorData ->
+            create(flavorData.flavorName) {
+                dimension = flavorData.flavorDimension
             }
         }
     }
-}
-
-internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
-    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }
