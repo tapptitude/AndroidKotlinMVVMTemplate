@@ -21,11 +21,11 @@ import com.tapptitude.template.home.navigation.homeScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun TemplateApp() {
+fun TemplateApp(modifier: Modifier = Modifier) {
     val appNavController = rememberNavController()
     Scaffold { padding ->
         Row(
-            Modifier
+            modifier
                 .fillMaxSize()
                 .padding(padding)
                 .consumedWindowInsets(padding)
