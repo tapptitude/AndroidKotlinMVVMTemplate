@@ -1,8 +1,8 @@
 plugins {
     id("android.application")
     id("android.application.compose")
-    id(libs.plugins.firebase.crashlytics.get().pluginId)
-    id(libs.plugins.google.services.get().pluginId)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.google.services)
     id("android.signing.config")
 }
 
@@ -34,10 +34,12 @@ android {
 dependencies {
     implementation(project(":crashlytics"))
     implementation(project(":feature:home"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.androidx.navigation.compose)
