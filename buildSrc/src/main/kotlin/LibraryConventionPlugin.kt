@@ -1,10 +1,11 @@
 import com.android.build.api.dsl.LibraryExtension
-import configuration.Android
+import configuration.Android.KOTLIN_JVM_TOOLCHAIN_VERSION
 import ext.addBaseCommonConfig
 import ext.addFlavors
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 class LibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -14,8 +15,11 @@ class LibraryConventionPlugin : Plugin<Project> {
 
         target.extensions.configure<LibraryExtension> {
             target.addBaseCommonConfig(this)
-            defaultConfig.targetSdk = Android.TARGET_SDK_VERSION
             addFlavors()
+        }
+
+        target.extensions.configure<KotlinAndroidProjectExtension> {
+            jvmToolchain(KOTLIN_JVM_TOOLCHAIN_VERSION)
         }
     }
 }

@@ -9,9 +9,10 @@ import configuration.DimensionsEnum.API
 import configuration.FlavorsEnum
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal fun Project.addBaseCommonConfig(
     commonExtension: CommonExtension<*, *, *, *>
@@ -28,7 +29,9 @@ internal fun Project.addBaseCommonConfig(
             targetCompatibility = JAVA_LANGUAGE_LEVEL
         }
 
-        kotlinExtension.jvmToolchain(KOTLIN_LANGUAGE_LEVEL)
+        kotlinOptions {
+            jvmTarget = KOTLIN_LANGUAGE_LEVEL
+        }
     }
 }
 
@@ -64,4 +67,8 @@ internal fun CommonExtension<*, *, *, *>.addFlavors(): CommonExtension<*, *, *, 
             }
         }
     }
+}
+
+internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

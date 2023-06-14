@@ -14,6 +14,7 @@ object Android {
 
     const val TEST_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
-    const val KOTLIN_LANGUAGE_LEVEL = 11
-    val JAVA_LANGUAGE_LEVEL = JavaVersion.VERSION_11
+    const val KOTLIN_LANGUAGE_LEVEL = "17"
+    const val KOTLIN_JVM_TOOLCHAIN_VERSION = 17
+    val JAVA_LANGUAGE_LEVEL = JavaVersion.VERSION_17
 }
