@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.core"
+    namespace = "com.tapptitude.template.core"
 }
 
 dependencies {

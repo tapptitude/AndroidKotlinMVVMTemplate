@@ -16,8 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.tapptitude.home.navigation.homeRoute
-import com.tapptitude.home.navigation.homeScreen
+import com.tapptitude.template.home.navigation.homeRoute
+import com.tapptitude.template.home.navigation.homeScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable

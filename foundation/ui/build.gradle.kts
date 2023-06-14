@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.foundation.ui"
+    namespace = "com.tapptitude.template.foundation.ui"
 }
 
 dependencies {

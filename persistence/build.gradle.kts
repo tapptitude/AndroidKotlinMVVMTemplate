@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.tapptitude.persistence"
+    namespace = "com.tapptitude.template.persistence"
 
     defaultConfig {
         javaCompileOptions {

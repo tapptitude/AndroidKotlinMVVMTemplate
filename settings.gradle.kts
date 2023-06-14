@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tapptitude Template"
+rootProject.name = "AndroidMVVMKotlinTemplate"
 
 include(":app")
 include(":network")
