@@ -1,10 +1,11 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp") version "1.6.21-1.0.5"
+    id("android.library")
+    alias(libs.plugins.ksp)
 }
 
 android {
+    namespace = "com.tapptitude.template.persistence"
+
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
@@ -19,7 +20,9 @@ android {
 }
 
 dependencies {
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.bundles.roomBundle)
-    ksp(appLibs.roomKsp)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 }

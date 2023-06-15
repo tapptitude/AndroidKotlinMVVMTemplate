@@ -1,14 +1,14 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.firebase.crashlytics")
-    id("com.google.gms.google-services")
-    kotlin("kapt")
+    id("android.application")
+    id("android.application.compose")
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.google.services)
+    id("android.signing.config")
 }
 
-apply<plugin.SigningConfigPlugin>()
-
 android {
+    namespace = "com.tapptitude.template"
+
     defaultConfig {
         applicationId = configuration.Android.APPLICATION_ID
         versionCode = configuration.Android.VERSION_CODE
@@ -18,28 +18,33 @@ android {
     buildTypes {
 
         getByName("debug") {
-            this.manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+            applicationIdSuffix = ".debug"
         }
 
         getByName("release") {
             isMinifyEnabled = false
-            this.manifestPlaceholders["crashlyticsCollectionEnabled"] = true
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName(plugin.SigningConfigPlugin.SIGNATURE_RELEASE)
+            signingConfig = signingConfigs.getByName(SigningConfigPlugin.SIGNATURE_RELEASE)
         }
     }
 }
 
 dependencies {
-    api(project(":featureHome"))
-    api(project(":crashlytics"))
+    implementation(project(":crashlytics"))
+    implementation(project(":feature:home"))
+    implementation(project(":common"))
 
-    implementation(appLibs.androidXCoreKtx)
-    implementation(appLibs.androidXAppCompat)
-    implementation(appLibs.googleMaterial)
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.bundles.androidXNavigationBundle)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.androidx.navigation.compose)
 
-    testImplementation(testLibs.bundles.testBundle)
-    androidTestImplementation(androidTestLibs.bundles.androidTestBundle)
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.ext)
 }

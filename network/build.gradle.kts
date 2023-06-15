@@ -1,18 +1,25 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    id("android.library")
+    alias(libs.plugins.ksp)
+}
+
+android {
+    namespace = "com.tapptitude.template.network"
 }
 
 dependencies {
     implementation(project(":config"))
     implementation(project(":session"))
+    implementation(project(":common"))
 
-    implementation(appLibs.androidXCoreKtx)
-    implementation(appLibs.bundles.okhttpBundle)
-    implementation(appLibs.bundles.retrofitBundle)
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.kotlinXCoroutines)
-    implementation(appLibs.moshi)
-    kapt(appLibs.moshiKapt)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.moshi.converter)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.kotlin.codegen)
 }

@@ -1,14 +1,14 @@
 package com.tapptitude.template
 
 import android.app.Application
-import com.tapptitude.core.di.coreModule
-import com.tapptitude.crashlytics.di.crashlyticsModule
-import com.tapptitude.featurehome.di.homeModules
-import com.tapptitude.imageloading.di.imageLoaderModule
-import com.tapptitude.logger.di.loggerModule
-import com.tapptitude.network.di.networkModule
-import com.tapptitude.persistence.di.databaseModule
-import com.tapptitude.session.di.sessionModule
+import com.tapptitude.template.common.di.commonModule
+import com.tapptitude.template.core.di.coreModule
+import com.tapptitude.template.crashlytics.di.crashlyticsModule
+import com.tapptitude.template.home.di.homeModules
+import com.tapptitude.template.logger.di.loggerModule
+import com.tapptitude.template.network.di.networkModule
+import com.tapptitude.template.persistence.di.databaseModule
+import com.tapptitude.template.session.di.sessionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -26,11 +26,11 @@ class ApplicationImpl : Application() {
                 networkModule,
                 coreModule,
                 homeModules,
-                imageLoaderModule,
                 loggerModule,
                 sessionModule,
                 crashlyticsModule,
-                databaseModule
+                databaseModule,
+                commonModule
             )
         }
     }

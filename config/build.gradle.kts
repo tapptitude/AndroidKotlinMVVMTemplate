@@ -1,9 +1,10 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("android.library")
 }
 
 android {
+    namespace = "com.tapptitude.template.config"
+
     productFlavors {
         configuration.FlavorsEnum.values().forEach { flavorData ->
             getByName(flavorData.flavorName) {

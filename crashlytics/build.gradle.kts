@@ -1,13 +1,17 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.firebase.crashlytics")
+    id("android.library")
+    alias(libs.plugins.firebase.crashlytics)
+}
+
+android {
+    namespace = "com.tapptitude.template.crashlytics"
 }
 
 dependencies {
     implementation(project(":config"))
 
-    implementation(appLibs.bundles.koinBundle)
-    implementation(appLibs.firebaseCrashlytics)
-    implementation(appLibs.firebaseAnalytics)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 }

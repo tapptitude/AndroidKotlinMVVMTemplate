@@ -1,64 +1,64 @@
 package ext
 
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.android.build.gradle.internal.dsl.InternalLibraryExtension
-import com.android.build.gradle.internal.plugins.AppPlugin
-import com.android.build.gradle.internal.plugins.LibraryPlugin
-import configuration.DimensionsEnum
+import com.android.build.api.dsl.CommonExtension
+import configuration.Android.COMPILE_SDK_VERSION
+import configuration.Android.JAVA_LANGUAGE_LEVEL
+import configuration.Android.KOTLIN_LANGUAGE_LEVEL
+import configuration.Android.MIN_SDK_VERSION
+import configuration.DimensionsEnum.API
 import configuration.FlavorsEnum
 import org.gradle.api.Project
-import org.gradle.api.plugins.PluginContainer
+import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.plugins.ExtensionAware
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-fun Project.addBasicConfiguration() {
-    plugins.addBasicConfiguration(project)
+internal fun Project.addBaseCommonConfig(
+    commonExtension: CommonExtension<*, *, *, *>
+) {
+    commonExtension.apply {
+        compileSdk = COMPILE_SDK_VERSION
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = configuration.Android.KOTLIN_LANGUAGE_LEVEL
-    }
-}
+        defaultConfig {
+            minSdk = MIN_SDK_VERSION
+        }
 
-fun PluginContainer.addBasicConfiguration(project: Project) {
-    whenPluginAdded {
-        if (this is LibraryPlugin || this is AppPlugin) {
-            val extensions = project.extensions
+        compileOptions {
+            sourceCompatibility = JAVA_LANGUAGE_LEVEL
+            targetCompatibility = JAVA_LANGUAGE_LEVEL
+        }
 
-            if (extensions.findByType(BaseExtension::class.java) != null) {
-                extensions
-                    .getByType<BaseExtension>()
-                    .addBaseCommonConfig()
-            }
-
-            if (extensions.findByType(BaseAppModuleExtension::class.java) != null) {
-                extensions
-                    .getByType<BaseAppModuleExtension>()
-                    .addBaseCommonConfig()
-            }
-
-            if (extensions.findByType(InternalLibraryExtension::class.java) != null) {
-                extensions
-                    .getByType<InternalLibraryExtension>()
-                    .addBaseCommonConfig()
-            }
+        kotlinOptions {
+            jvmTarget = KOTLIN_LANGUAGE_LEVEL
         }
     }
 }
 
-fun BaseExtension.addBaseCommonConfig() {
-    setCompileSdkVersion(configuration.Android.COMPILE_SDK_VERSION)
+internal fun Project.addAndroidComposeConfig(
+    commonExtension: CommonExtension<*, *, *, *>,
+) {
+    val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
-    defaultConfig {
-        minSdk = configuration.Android.MIN_SDK_VERSION
-        targetSdk = configuration.Android.TARGET_SDK_VERSION
-    }
+    commonExtension.apply {
+        buildFeatures {
+            compose = true
+        }
 
-    compileOptions {
-        sourceCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
-        targetCompatibility = configuration.Android.JAVA_LANGUAGE_LEVEL
+        composeOptions {
+            kotlinCompilerExtensionVersion = libs.findVersion("androidxComposeCompiler").get().toString()
+        }
+
+        dependencies {
+            val bom = libs.findLibrary("androidx-compose-bom").get()
+            add("implementation", platform(bom))
+            add("androidTestImplementation", platform(bom))
+        }
     }
+}
+
+internal fun CommonExtension<*, *, *, *>.addFlavors(): CommonExtension<*, *, *, *> = apply {
+    flavorDimensions += API.title
 
     productFlavors {
         FlavorsEnum.values().forEach { flavorData ->
@@ -67,20 +67,8 @@ fun BaseExtension.addBaseCommonConfig() {
             }
         }
     }
-
-    flavorDimensions(*DimensionsEnum.values().map { it.title }.toTypedArray())
 }
 
-fun BaseAppModuleExtension.addBaseCommonConfig() {
-    buildFeatures {
-        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
-        dataBinding = configuration.Android.DATA_BINDING_ENABLED
-    }
-}
-
-fun InternalLibraryExtension.addBaseCommonConfig() {
-    buildFeatures {
-        viewBinding = configuration.Android.VIEW_BINDING_ENABLED
-        dataBinding = configuration.Android.DATA_BINDING_ENABLED
-    }
+internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }
