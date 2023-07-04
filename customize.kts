@@ -46,7 +46,6 @@ File(".").walkTopDown()
         tempFile.renameTo(it)
     }
 
-
 println("Renaming AndroidMVVMKotlinTemplate app to $appName")
 File(".").walkTopDown()
     .filter { it.name == "settings.gradle.kts" || it.extension == "xml" }

@@ -1,7 +1,7 @@
 package com.tapptitude.template
 
 import android.app.Application
-import com.tapptitude.template.common.di.commonModule
+import com.tapptitude.template.common.di.*
 import com.tapptitude.template.core.di.coreModule
 import com.tapptitude.template.crashlytics.di.crashlyticsModule
 import com.tapptitude.template.home.di.homeModules
@@ -32,6 +32,11 @@ class ApplicationImpl : Application() {
                 databaseModule,
                 commonModule
             )
+
+
+
+
+
         }
     }
 }
