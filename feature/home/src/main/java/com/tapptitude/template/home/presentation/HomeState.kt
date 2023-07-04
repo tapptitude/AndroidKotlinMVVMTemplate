@@ -1,6 +1,5 @@
 package com.tapptitude.template.home.presentation
 
-
 import com.tapptitude.template.core.model.Image
 import com.tapptitude.template.session.model.LoginState
 
