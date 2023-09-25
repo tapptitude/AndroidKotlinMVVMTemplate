@@ -4,9 +4,9 @@ sealed class LoginState
 
 class LoggedIn(
     val sessionToken: String,
-    val userId: String
+    val userId: String,
 ) : LoginState()
 
 class LoggedOut(
-    val lastUserId: String? = null
+    val lastUserId: String? = null,
 ) : LoginState()

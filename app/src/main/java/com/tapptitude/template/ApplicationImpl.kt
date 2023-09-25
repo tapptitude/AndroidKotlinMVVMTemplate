@@ -30,7 +30,7 @@ class ApplicationImpl : Application() {
                 sessionModule,
                 crashlyticsModule,
                 databaseModule,
-                commonModule
+                commonModule,
             )
         }
     }

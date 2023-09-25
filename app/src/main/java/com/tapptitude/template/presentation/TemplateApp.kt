@@ -29,11 +29,11 @@ fun TemplateApp(modifier: Modifier = Modifier) {
                 .fillMaxSize()
                 .padding(padding)
                 .consumedWindowInsets(padding)
-                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+                .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)),
         ) {
             NavHost(
                 navController = appNavController,
-                startDestination = homeRoute
+                startDestination = homeRoute,
             ) {
                 homeScreen()
             }

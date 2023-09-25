@@ -1,27 +1,25 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath(libs.android.gradlePlugin)
-        classpath(libs.kotlin.gradlePlugin)
-    }
-}
-
 plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
+    alias(libs.plugins.spotless)
     alias(libs.plugins.versions)
-    alias(libs.plugins.ktlint)
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint(libs.versions.ktlint.get())
+    }
+
+    kotlinGradle {
+        target("*.kts")
+        ktlint(libs.versions.ktlint.get())
+    }
 }
 
 tasks.withType<DependencyUpdatesTask> {

@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("gradle/build-logic")
     repositories {
         gradlePluginPortal()
         google()
@@ -12,6 +13,8 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "AndroidMVVMKotlinTemplate"
 

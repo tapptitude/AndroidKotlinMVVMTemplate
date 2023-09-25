@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 
 class ImageRemoteDataSource(
     private val dispatcherProvider: DispatcherProvider,
-    private val imageApi: ImageApi
+    private val imageApi: ImageApi,
 ) {
 
     suspend fun getRandomImage(): ImageDto = withContext(dispatcherProvider.io) {

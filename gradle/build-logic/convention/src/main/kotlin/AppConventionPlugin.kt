@@ -11,8 +11,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 class AppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply("com.android.application")
-        target.pluginManager.apply("org.jetbrains.kotlin.android")
-        target.pluginManager.apply("org.jlleitschuh.gradle.ktlint")
+        target.pluginManager.apply("android.kotlin")
 
         target.extensions.configure<ApplicationExtension> {
             target.addBaseCommonConfig(this)

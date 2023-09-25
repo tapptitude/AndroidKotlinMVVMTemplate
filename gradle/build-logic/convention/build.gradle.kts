@@ -1,14 +1,28 @@
 plugins {
     `kotlin-dsl`
+    alias(libs.plugins.spotless)
 }
 
 java {
     toolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
 }
 
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint(libs.versions.ktlint.get())
+    }
+
+    kotlinGradle {
+        target("*.kts")
+        ktlint(libs.versions.ktlint.get())
+    }
+}
+
 dependencies {
-    implementation(libs.android.gradlePlugin)
-    implementation(libs.kotlin.gradlePlugin)
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.spotless.gradlePlugin)
 }
 
 gradlePlugin {
@@ -36,6 +50,10 @@ gradlePlugin {
         register("signingConfig") {
             id = "android.signing.config"
             implementationClass = "SigningConfigPlugin"
+        }
+        register("androidKotlin") {
+            id = "android.kotlin"
+            implementationClass = "KotlinAndroidConventionPlugin"
         }
     }
 }

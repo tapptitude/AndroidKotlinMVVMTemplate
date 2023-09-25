@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 internal class SessionManagerImpl(
     dispatcherProvider: DispatcherProvider,
-    private val localSessionDataManager: LocalSessionDataManager
+    private val localSessionDataManager: LocalSessionDataManager,
 ) : SessionManager {
     override val currentLoginStateFlow = MutableStateFlow<LoginState>(LoggedOut(null))
 
