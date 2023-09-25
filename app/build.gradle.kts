@@ -1,6 +1,7 @@
 plugins {
     id("android.application")
     id("android.application.compose")
+    id("koin")
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.google.services)
     id("android.signing.config")
@@ -40,8 +41,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
     implementation(libs.androidx.navigation.compose)
 
     testImplementation(libs.junit4)

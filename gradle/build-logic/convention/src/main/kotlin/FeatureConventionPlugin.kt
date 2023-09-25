@@ -9,6 +9,7 @@ class FeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply("android.library")
         target.pluginManager.apply("android.library.compose")
+        target.pluginManager.apply("koin")
 
         val libs = target.extensions.getByType<VersionCatalogsExtension>().named("libs")
 
@@ -24,8 +25,6 @@ class FeatureConventionPlugin : Plugin<Project> {
             add("implementation", libs.findLibrary("androidx.navigation.compose").get())
             add("implementation", libs.findLibrary("coil.kt.compose").get())
             add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
-            add("implementation", libs.findLibrary("koin.core").get())
-            add("implementation", libs.findLibrary("koin.android").get())
             add("implementation", libs.findLibrary("koin.androidx.compose").get())
 
             add("lintChecks", libs.findLibrary("compose.lintChecks").get())

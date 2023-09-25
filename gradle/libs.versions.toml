@@ -1,15 +1,15 @@
 [versions]
-androidGradlePlugin = "8.0.2"
+androidGradlePlugin = "8.1.1"
 androidxActivity = "1.7.2"
 androidxAppCompat = "1.6.1"
-androidxComposeBom = "2023.05.01"
-androidxComposeCompiler = "1.4.7"
-androidxCore = "1.10.1"
+androidxComposeBom = "2023.09.01"
+androidxComposeCompiler = "1.5.3"
+androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.1"
 androidxDataStore = "1.0.0"
 androidxEspresso = "3.5.1"
-androidxLifecycle = "2.6.1"
-androidxNavigation = "2.5.3"
+androidxLifecycle = "2.6.2"
+androidxNavigation = "2.7.3"
 androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.5"
 androidxTestRules = "1.5.0"
@@ -17,20 +17,19 @@ androidxTestRunner = "1.5.2"
 coil = "2.4.0"
 composeLintChecks = "1.2.0"
 firebaseAnalytics = "21.3.0"
-firebaseCrashlytics = "18.3.7"
-firebaseGradle = "2.9.5"
-googleServices = "4.3.15"
+firebaseCrashlytics = "18.4.3"
+firebaseGradle = "2.9.9"
+googleServices = "4.4.0"
 junit4 = "4.13.2"
-koin = "3.4.0"
-koinCompose = "3.4.4"
-kotlin = "1.8.21"
-kotlinxCoroutines = "1.7.1"
-ksp = "1.8.21-1.0.11"
+koin = "3.5.1"
+kotlin = "1.9.10"
+kotlinxCoroutines = "1.7.3"
+ksp = "1.9.10-1.0.13"
 ktlint = "0.50.0"
 moshi = "1.15.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
-room = "2.5.1"
+room = "2.5.2"
 spotless = "6.21.0"
 timber = "5.0.1"
 
@@ -66,9 +65,10 @@ firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashly
 firebase-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseGradle" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinCompose" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose" }
+koin-core = { group = "io.insert-koin", name = "koin-core" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }

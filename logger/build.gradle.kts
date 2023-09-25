@@ -1,5 +1,6 @@
 plugins {
     id("android.library")
+    id("koin")
 }
 
 android {
@@ -11,6 +12,4 @@ dependencies {
     implementation(project(":crashlytics"))
 
     implementation(libs.timber)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
 }
