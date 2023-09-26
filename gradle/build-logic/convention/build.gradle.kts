@@ -55,5 +55,9 @@ gradlePlugin {
             id = "android.kotlin"
             implementationClass = "KotlinAndroidConventionPlugin"
         }
+        register("spotless") {
+            id = "spotless"
+            implementationClass = "SpotlessConventionPlugin"
+        }
     }
 }

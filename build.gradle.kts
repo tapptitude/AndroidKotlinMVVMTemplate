@@ -1,25 +1,15 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
+    id("spotless")
+
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
-    alias(libs.plugins.spotless)
+    alias(libs.plugins.spotless) apply false
     alias(libs.plugins.versions)
-}
-
-spotless {
-    kotlin {
-        target("src/**/*.kt")
-        ktlint(libs.versions.ktlint.get())
-    }
-
-    kotlinGradle {
-        target("*.kts")
-        ktlint(libs.versions.ktlint.get())
-    }
 }
 
 tasks.withType<DependencyUpdatesTask> {
