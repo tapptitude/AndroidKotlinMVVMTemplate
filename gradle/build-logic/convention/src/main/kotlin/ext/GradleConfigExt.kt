@@ -14,7 +14,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-internal fun Project.addBaseCommonConfig(
+internal fun addBaseCommonConfig(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
     commonExtension.apply {

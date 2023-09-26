@@ -14,7 +14,7 @@ class AppConventionPlugin : Plugin<Project> {
         target.pluginManager.apply("android.kotlin")
 
         target.extensions.configure<ApplicationExtension> {
-            target.addBaseCommonConfig(this)
+            addBaseCommonConfig(this)
             defaultConfig.targetSdk = Android.TARGET_SDK_VERSION
             addFlavors()
         }

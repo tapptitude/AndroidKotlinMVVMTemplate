@@ -13,7 +13,7 @@ class LibraryConventionPlugin : Plugin<Project> {
         target.pluginManager.apply("android.kotlin")
 
         target.extensions.configure<LibraryExtension> {
-            target.addBaseCommonConfig(this)
+            addBaseCommonConfig(this)
             addFlavors()
         }
 
