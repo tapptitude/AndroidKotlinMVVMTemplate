@@ -7,3 +7,6 @@ trim_trailing_whitespace = true
 
 [*.{kt,kts}]
 ktlint_code_style = ktlint_official
+
+[*.{yml,yaml}]
+indent_size = 2
