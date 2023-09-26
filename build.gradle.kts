@@ -2,6 +2,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
     id("spotless")
+    id("detekt")
 
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -9,7 +10,12 @@ plugins {
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.detekt) apply false
     alias(libs.plugins.versions)
+}
+
+detekt {
+    config.setFrom(file("config/detekt/detekt.yml"))
 }
 
 tasks.withType<DependencyUpdatesTask> {

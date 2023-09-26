@@ -1,10 +1,11 @@
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
 }
 
 java {
-    toolchain { languageVersion.set(JavaLanguageVersion.of(11)) }
+    toolchain { languageVersion.set(JavaLanguageVersion.of(17)) }
 }
 
 spotless {
@@ -19,10 +20,16 @@ spotless {
     }
 }
 
+detekt {
+    config.from(file("${rootProject.projectDir}/config/detekt/detekt.yml"))
+    basePath = rootProject.projectDir.absolutePath
+}
+
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.spotless.gradlePlugin)
+    compileOnly(libs.detekt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -62,6 +69,10 @@ gradlePlugin {
         register("koin") {
             id = "koin"
             implementationClass = "KoinConventionPlugin"
+        }
+        register("detekt") {
+            id = "detekt"
+            implementationClass = "DetektConventionPlugin"
         }
     }
 }

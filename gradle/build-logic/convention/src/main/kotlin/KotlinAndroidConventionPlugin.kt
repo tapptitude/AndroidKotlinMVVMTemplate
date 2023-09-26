@@ -6,6 +6,7 @@ class KotlinAndroidConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("org.jetbrains.kotlin.android")
             pluginManager.apply("spotless")
+            pluginManager.apply("detekt")
         }
     }
 }

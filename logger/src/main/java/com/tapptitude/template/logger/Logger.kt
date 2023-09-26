@@ -1,5 +1,6 @@
 package com.tapptitude.template.logger
 
+@Suppress("TooManyFunctions")
 interface Logger {
     fun logV(message: String, vararg params: Any?)
     fun logV(throwable: Throwable, message: String, vararg params: Any?)
