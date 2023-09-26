@@ -128,6 +128,14 @@ Provides build specific configuration to any module that needs it. Provided info
 - build flavor
 - debug mode
 
+## Code style
+
+This project uses [ktlint](https://github.com/pinterest/ktlint), provided via the [spotless](https://github.com/diffplug/spotless)
+gradle plugin.
+
+Before pushing any code to the repository, please run the [spotlessApply](.run/spotlessApply.run.xml) configuration to fix any
+code style issues. You can also do this via command line by running `./gradlew spotlessApply`
+
 ## License
 
 Copyright © 2022 [Tapptitude](https://www.tapptitude.com/)
