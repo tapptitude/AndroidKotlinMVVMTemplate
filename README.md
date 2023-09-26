@@ -12,7 +12,8 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
 - Dependencies managed
   through [Gradle version catalogs](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) `*.toml`
 - Application signing, flavors & dimensions setup done
-  through  `buildSrc` [(Kotlin DSL)](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+  in  [`convention`](gradle/build-logic/convention)
+  using [convention plugins](https://docs.gradle.org/current/userguide/sharing_build_logic_between_subprojects.html#sec:convention_plugins)
 - Supports `dev` & `production` flavors out of the box
 - Lays the foundation for independent core business & presentation modules [`network`](#network), [`logger`](#logger)
   , [`persistence`](#persistence), [`session`](#session)
@@ -27,7 +28,7 @@ A 100% Kotlin-based project template that helps us kick start our Android projec
    you to input the package and app name.
 4. Sync the project.
 5. Update signing configuration available in the Gradle DSL
-   plugin [`SigningConfigPlugin`](buildSrc/src/main/kotlin/SigningConfigPlugin.kt)
+   plugin [`SigningConfigPlugin`](gradle/build-logic/convention/src/main/kotlin/SigningConfigPlugin.kt)
 
 ## Gradle structure
 
@@ -35,11 +36,11 @@ The template uses Gradle Kotlin DSL for build setup.
 
 Dependencies are organized into a `toml` configuration file - [`libs.versions.toml`](gradle/libs.versions.toml).
 
-Common module setup is done using [convention plugins](buildSrc/src/main/kotlin). The approach is based
+Common module setup is done using [convention plugins](gradle/build-logic/convention/src/main/kotlin). The approach is based
 on [https://github.com/android/nowinandroid](https://github.com/android/nowinandroid).
 Modules should choose the plugin they need and specify it in the `plugins { }` section of the `build.gradle.kts`.
 
-Android specific configuration is available in the [`Android`](buildSrc/src/main/kotlin/configuration/Android.kt)
+Android specific configuration is available in the [`Android`](gradle/build-logic/convention/src/main/kotlin/configuration/Android.kt)
 class.
 
 ## Architecture considerations
