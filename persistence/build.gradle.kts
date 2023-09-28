@@ -1,5 +1,6 @@
 plugins {
     id("android.library")
+    id("koin")
     alias(libs.plugins.ksp)
 }
 
@@ -20,8 +21,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)

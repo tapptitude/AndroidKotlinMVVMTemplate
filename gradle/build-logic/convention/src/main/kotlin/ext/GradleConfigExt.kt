@@ -15,7 +15,7 @@ import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal fun addBaseCommonConfig(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
         compileSdk = COMPILE_SDK_VERSION
@@ -36,7 +36,7 @@ internal fun addBaseCommonConfig(
 }
 
 internal fun Project.addAndroidComposeConfig(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
@@ -57,7 +57,7 @@ internal fun Project.addAndroidComposeConfig(
     }
 }
 
-internal fun CommonExtension<*, *, *, *>.addFlavors(): CommonExtension<*, *, *, *> = apply {
+internal fun CommonExtension<*, *, *, *, *>.addFlavors(): CommonExtension<*, *, *, *, *> = apply {
     flavorDimensions += API.title
 
     productFlavors {
@@ -69,6 +69,6 @@ internal fun CommonExtension<*, *, *, *>.addFlavors(): CommonExtension<*, *, *, 
     }
 }
 
-internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+internal fun CommonExtension<*, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

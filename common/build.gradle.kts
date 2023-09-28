@@ -1,5 +1,6 @@
 plugins {
     id("android.library")
+    id("koin")
 }
 
 android {
@@ -8,6 +9,4 @@ android {
 
 dependencies {
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
 }

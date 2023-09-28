@@ -59,5 +59,9 @@ gradlePlugin {
             id = "spotless"
             implementationClass = "SpotlessConventionPlugin"
         }
+        register("koin") {
+            id = "koin"
+            implementationClass = "KoinConventionPlugin"
+        }
     }
 }

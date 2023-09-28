@@ -1,5 +1,6 @@
 plugins {
     id("android.library")
+    id("koin")
     alias(libs.plugins.ksp)
 }
 
@@ -18,8 +19,6 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi.converter)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)
 }
