@@ -10,7 +10,6 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-
       - name: ktlint
         uses: ScaCap/action-ktlint@master
         with:
@@ -18,11 +17,26 @@ jobs:
           reporter: github-pr-check
           ktlint_version: 0.50.0
 
-      - name: Run detekt
-          run: ./gradlew detekt
+  without-type-resolution:
+    runs-on: ubuntu-latest
+    env:
+      GRADLE_OPTS: -Dorg.gradle.daemon=false
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+      # Make sure we always run this upload task,
+      # because the previous step may fail if there are findings.
       - name: Upload SARIF to GitHub using the upload-sarif action
-          uses: github/codeql-action/upload-sarif@v2
-          if: success() || failure()
-          with:
-            sarif_file: build/reports/detekt/detekt.sarif
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/detekt.sarif
