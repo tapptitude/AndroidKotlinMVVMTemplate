@@ -11,6 +11,7 @@ android {
 dependencies {
     implementation(project(":config"))
 
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
 }

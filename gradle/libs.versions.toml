@@ -2,7 +2,7 @@
 androidGradlePlugin = "8.1.1"
 androidxActivity = "1.7.2"
 androidxAppCompat = "1.6.1"
-androidxComposeBom = "2023.09.01"
+androidxComposeBom = "2023.09.02"
 androidxComposeCompiler = "1.5.3"
 androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.1"
@@ -16,8 +16,7 @@ androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.2"
 coil = "2.4.0"
 composeLintChecks = "1.2.0"
-firebaseAnalytics = "21.3.0"
-firebaseCrashlytics = "18.4.3"
+firebaseBom = "32.3.1"
 firebaseGradle = "2.9.9"
 googleServices = "4.4.0"
 junit4 = "4.13.2"
@@ -60,8 +59,9 @@ androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "
 androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 compose-lintChecks = { group = "com.slack.lint.compose", name = "compose-lint-checks", version.ref = "composeLintChecks" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
 firebase-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseGradle" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
@@ -95,5 +95,5 @@ firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
+versions = { id = "com.github.ben-manes.versions", version = "0.48.0" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
