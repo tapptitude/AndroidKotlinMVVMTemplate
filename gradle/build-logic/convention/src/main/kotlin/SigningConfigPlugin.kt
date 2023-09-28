@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.ApkSigningConfig
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.SigningConfig
 import org.gradle.api.Plugin

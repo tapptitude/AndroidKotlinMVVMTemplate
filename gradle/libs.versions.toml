@@ -26,11 +26,12 @@ koinCompose = "3.4.4"
 kotlin = "1.8.21"
 kotlinxCoroutines = "1.7.1"
 ksp = "1.8.21-1.0.11"
-ktlint = "11.3.2"
+ktlint = "0.50.0"
 moshi = "1.15.0"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 room = "2.5.1"
+spotless = "6.21.0"
 timber = "5.0.1"
 
 [libraries]
@@ -85,12 +86,14 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+spotless-gradlePlugin = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseGradle" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

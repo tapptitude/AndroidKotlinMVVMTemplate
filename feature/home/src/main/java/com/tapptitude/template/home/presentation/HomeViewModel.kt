@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val dispatcherProvider: DispatcherProvider,
     private val loadImageUseCase: LoadImageUseCase,
-    private val sessionManager: SessionManager
+    private val sessionManager: SessionManager,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState(isLoading = false, loginState = LoggedOut(), image = null))
