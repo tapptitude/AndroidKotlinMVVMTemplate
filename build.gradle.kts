@@ -14,8 +14,18 @@ plugins {
     alias(libs.plugins.versions)
 }
 
-detekt {
-    config.setFrom(file("config/detekt/detekt.yml"))
+val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.sarif")) // or "reports/detekt/merge.sarif"
+}
+
+subprojects {
+    tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+        finalizedBy(reportMerge)
+    }
+
+    reportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile }) // or .sarifReportFile
+    }
 }
 
 tasks.withType<DependencyUpdatesTask> {
