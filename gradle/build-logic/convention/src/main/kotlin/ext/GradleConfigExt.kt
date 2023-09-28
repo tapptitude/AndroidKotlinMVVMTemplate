@@ -36,7 +36,7 @@ internal fun addBaseCommonConfig(
 }
 
 internal fun Project.addAndroidComposeConfig(
-    commonExtension: CommonExtension<*, *, *, *, *>
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
