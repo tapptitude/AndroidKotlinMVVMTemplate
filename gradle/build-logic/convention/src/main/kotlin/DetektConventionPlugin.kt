@@ -16,6 +16,7 @@ private fun Project.configureDetekt() {
     detekt {
         config.from(file("${rootProject.projectDir}/config/detekt/detekt.yml"))
         basePath = rootProject.projectDir.absolutePath
+        buildUponDefaultConfig = true
     }
 }
 

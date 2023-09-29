@@ -21,5 +21,4 @@ class ImageRepositoryImpl(
             imagesDao.getRandomImage()?.toImage() ?: throw e
         }
     }
-    
 }

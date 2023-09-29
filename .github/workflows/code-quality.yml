@@ -1,4 +1,4 @@
-name: CodeQuality
+name: Check Code Quality
 on: [ pull_request ]
 jobs:
   ktlint:
@@ -7,9 +7,8 @@ jobs:
 
     steps:
       - name: Clone repo
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v4
+
       - name: ktlint
         uses: ScaCap/action-ktlint@master
         with:
@@ -28,7 +27,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Run detekt
@@ -36,7 +35,7 @@ jobs:
 
       # Make sure we always run this upload task,
       # because the previous step may fail if there are findings.
-      - name: Upload SARIF to GitHub using the upload-sarif action
+      - name: Upload detekt report
         uses: github/codeql-action/upload-sarif@v2
         if: success() || failure()
         with:
