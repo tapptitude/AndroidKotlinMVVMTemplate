@@ -14,17 +14,25 @@ plugins {
     alias(libs.plugins.versions)
 }
 
-val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
-    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.sarif")) // or "reports/detekt/merge.sarif"
+val sarifReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.sarif"))
+}
+
+val xmlReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.xml"))
 }
 
 subprojects {
     tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-        finalizedBy(reportMerge)
+        finalizedBy(sarifReportMerge, xmlReportMerge)
     }
 
-    reportMerge {
-        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile }) // or .sarifReportFile
+    sarifReportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile })
+    }
+
+    xmlReportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.xmlReportFile })
     }
 }
 

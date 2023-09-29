@@ -46,6 +46,7 @@ class HomeViewModel(
         }
     }
 
+    @Suppress("MagicNumber")
     private fun doLogin() {
         val randomId = (System.currentTimeMillis() % 10000).toString()
         sessionManager.onLoggedIn("SampleToken", "userId$randomId")

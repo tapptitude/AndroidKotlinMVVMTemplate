@@ -14,6 +14,7 @@ class ImageRepositoryImpl(
     private val imagesDao: ImagesDao,
 ) : ImageRepository {
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun getRandomImage(): Image = withContext(dispatcherProvider.io) {
         try {
             imagesDao.save(imageRemoteDataSource.getRandomImage().toEntity()).toImage()
