@@ -1,0 +1,26 @@
+config:
+  warningsAsErrors: true
+
+complexity:
+  LongParameterList:
+    functionThreshold: 8
+    ignoreDefaultParameters: true
+
+naming:
+  active: true
+  FunctionNaming:
+    active: true
+    ignoreAnnotated: [ 'Composable' ]
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+
+style:
+  MagicNumber:
+    excludes: [ '**/test/**', '**/*Test.kt', '**/androidTest/**' ]
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+  UnusedPrivateMember:
+    ignoreAnnotated: [ 'Preview' ]
+  WildcardImport:
+    active: true
+    excludeImports: [ ]

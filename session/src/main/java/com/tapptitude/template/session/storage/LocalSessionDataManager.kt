@@ -43,15 +43,16 @@ internal class LocalSessionDataManager(private val appContext: Context) {
     }
 
     private fun Preferences.toLoginState(): LoginState {
-        return if (this[KEY_LOGGED_IN] == true) {
-            val sessionToken = this[KEY_SESSION_TOKEN] ?: return LoggedOut()
-            val userId = this[KEY_USER_ID] ?: return LoggedOut()
+        val userId = this[KEY_USER_ID] ?: return LoggedOut()
 
-            LoggedIn(sessionToken, userId)
-        } else {
-            val userId = this[KEY_USER_ID] ?: return LoggedOut()
+        return when {
+            this[KEY_LOGGED_IN] == true -> {
+                val sessionToken = this[KEY_SESSION_TOKEN]
 
-            LoggedOut(lastUserId = userId)
+                if (sessionToken != null) LoggedIn(sessionToken, userId) else LoggedOut()
+            }
+
+            else -> LoggedOut(lastUserId = userId)
         }
     }
 

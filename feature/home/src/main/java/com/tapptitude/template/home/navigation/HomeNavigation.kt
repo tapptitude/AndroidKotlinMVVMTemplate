@@ -6,14 +6,14 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.tapptitude.template.home.presentation.HomeRoute
 
-const val homeRoute = "home"
+const val HomeRoute = "home"
 
 fun NavController.navigateHome(navOptions: NavOptions? = null) {
-    navigate(homeRoute, navOptions)
+    navigate(HomeRoute, navOptions)
 }
 
 fun NavGraphBuilder.homeScreen() {
-    composable(route = homeRoute) {
+    composable(route = HomeRoute) {
         HomeRoute()
     }
 }

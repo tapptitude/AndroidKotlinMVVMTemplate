@@ -4,6 +4,7 @@ import com.tapptitude.template.config.AppConfig
 import com.tapptitude.template.logger.Logger
 import timber.log.Timber
 
+@Suppress("TooManyFunctions")
 class TimberLogger : Logger {
     init {
         initTimberLogger()

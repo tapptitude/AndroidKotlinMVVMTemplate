@@ -2,6 +2,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
     id("spotless")
+    id("detekt")
 
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -9,7 +10,30 @@ plugins {
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.detekt) apply false
     alias(libs.plugins.versions)
+}
+
+val sarifReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.sarif"))
+}
+
+val xmlReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(rootProject.layout.buildDirectory.file("reports/detekt/detekt.xml"))
+}
+
+subprojects {
+    tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+        finalizedBy(sarifReportMerge, xmlReportMerge)
+    }
+
+    sarifReportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.sarifReportFile })
+    }
+
+    xmlReportMerge {
+        input.from(tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().map { it.xmlReportFile })
+    }
 }
 
 tasks.withType<DependencyUpdatesTask> {
