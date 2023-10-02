@@ -1,5 +1,6 @@
 plugins {
     id("android.library")
+    id("koin")
     alias(libs.plugins.firebase.crashlytics)
 }
 
@@ -10,8 +11,7 @@ android {
 dependencies {
     implementation(project(":config"))
 
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
 }

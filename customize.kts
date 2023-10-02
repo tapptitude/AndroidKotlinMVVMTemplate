@@ -37,7 +37,7 @@ File(".").walkTopDown()
         val writer = tempFile.bufferedWriter()
         it.bufferedReader().lines().forEach { line ->
             writer.write(
-                line.replace("com.tapptitude.template", "$packageName")
+                line.replace("com.tapptitude.template", "$packageName"),
             )
             writer.newLine()
         }
@@ -45,7 +45,6 @@ File(".").walkTopDown()
         it.delete()
         tempFile.renameTo(it)
     }
-
 
 println("Renaming AndroidMVVMKotlinTemplate app to $appName")
 File(".").walkTopDown()
@@ -55,7 +54,7 @@ File(".").walkTopDown()
         val writer = tempFile.bufferedWriter()
         it.bufferedReader().lines().forEach { line ->
             writer.write(
-                line.replace("AndroidMVVMKotlinTemplate", appName)
+                line.replace("AndroidMVVMKotlinTemplate", appName),
             )
             writer.newLine()
         }

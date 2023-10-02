@@ -10,11 +10,10 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 class LibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply("com.android.library")
-        target.pluginManager.apply("org.jetbrains.kotlin.android")
-        target.pluginManager.apply("org.jlleitschuh.gradle.ktlint")
+        target.pluginManager.apply("android.kotlin")
 
         target.extensions.configure<LibraryExtension> {
-            target.addBaseCommonConfig(this)
+            addBaseCommonConfig(this)
             addFlavors()
         }
 

@@ -14,6 +14,6 @@ internal object DatabaseMigrationsFactory {
                 database.execSQL("DROP TABLE IF EXISTS images")
                 database.execSQL("CREATE TABLE images(url TEXT NOT NULL primary key)")
             }
-        }
+        },
     )
 }

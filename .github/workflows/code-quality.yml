@@ -1,17 +1,42 @@
-name: reviewdog
-on: [pull_request]
+name: Check Code Quality
+on: [ pull_request ]
 jobs:
   ktlint:
-    name: Check Code Quality
+    name: Run ktlint
     runs-on: ubuntu-latest
 
     steps:
       - name: Clone repo
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v4
+
       - name: ktlint
         uses: ScaCap/action-ktlint@master
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
+          ktlint_version: 0.50.0
+
+  detekt:
+    name: Run detekt
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+      # Make sure we always run this upload task,
+      # because the previous step may fail if there are findings.
+      - name: Upload detekt report
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/detekt.sarif

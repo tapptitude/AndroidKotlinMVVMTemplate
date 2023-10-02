@@ -11,9 +11,10 @@ import kotlinx.coroutines.withContext
 class ImageRepositoryImpl(
     private val dispatcherProvider: DispatcherProvider,
     private val imageRemoteDataSource: ImageRemoteDataSource,
-    private val imagesDao: ImagesDao
+    private val imagesDao: ImagesDao,
 ) : ImageRepository {
 
+    @Suppress("TooGenericExceptionCaught")
     override suspend fun getRandomImage(): Image = withContext(dispatcherProvider.io) {
         try {
             imagesDao.save(imageRemoteDataSource.getRandomImage().toEntity()).toImage()

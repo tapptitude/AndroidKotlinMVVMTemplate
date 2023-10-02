@@ -6,9 +6,10 @@ import timber.log.Timber
 
 class ProductionTree : Timber.Tree() {
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO || priority == Log.WARN) return
-
-        // Log to Crashlytics
-        CrashlyticsFirebase().addLog(message)
+        when (priority) {
+            Log.VERBOSE, Log.DEBUG, Log.INFO, Log.WARN -> return
+            // Log to Crashlytics
+            else -> CrashlyticsFirebase().addLog(message)
+        }
     }
 }

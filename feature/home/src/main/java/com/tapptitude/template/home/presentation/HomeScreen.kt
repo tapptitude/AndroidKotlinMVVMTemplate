@@ -35,7 +35,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun HomeRoute(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = koinViewModel()
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -44,7 +44,7 @@ internal fun HomeRoute(
         image = state.image,
         loginState = state.loginState,
         onButtonClick = viewModel::toggleLoginMode,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -54,28 +54,28 @@ internal fun HomeScreen(
     image: Image?,
     loginState: LoginState,
     onButtonClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     if (!isLoading) {
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(24.dp),
         ) {
             Text(
                 text = stringResource(R.string.title_including_flavor_format, BuildConfig.FLAVOR),
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally),
             )
             Spacer(modifier = Modifier.size(16.dp))
             AsyncImage(
                 model = image?.imageUrl,
                 contentScale = ContentScale.Crop,
-                contentDescription = null
+                contentDescription = null,
             )
             Spacer(modifier = Modifier.size(16.dp))
             Button(
                 onClick = onButtonClick,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally),
             ) {
                 val btnStringId = when (loginState) {
                     is LoggedIn -> R.string.action_logout
@@ -90,24 +90,24 @@ internal fun HomeScreen(
             }
             Text(
                 text = loginStatus,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally),
             )
         }
     }
     AnimatedVisibility(
         visible = isLoading,
         enter = slideInVertically(
-            initialOffsetY = { fullHeight -> -fullHeight }
+            initialOffsetY = { fullHeight -> -fullHeight },
         ) + fadeIn(),
         exit = slideOutVertically(
-            targetOffsetY = { fullHeight -> -fullHeight }
-        ) + fadeOut()
+            targetOffsetY = { fullHeight -> -fullHeight },
+        ) + fadeOut(),
     ) {
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         ) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
     }
