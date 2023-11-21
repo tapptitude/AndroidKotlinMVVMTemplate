@@ -1,5 +1,5 @@
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.9.10-blue.svg)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-8.3-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.9.20-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-8.4-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-26%2B-blue.svg)](https://android-arsenal.com/api?level=26)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
