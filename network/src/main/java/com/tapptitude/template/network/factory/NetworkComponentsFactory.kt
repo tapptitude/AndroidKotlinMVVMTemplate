@@ -22,7 +22,10 @@ internal object NetworkComponentsFactory {
         }.build()
     }
 
-    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        moshi: Moshi,
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(AppConfig.BASE_URL)
             .client(okHttpClient)
@@ -34,7 +37,10 @@ internal object NetworkComponentsFactory {
         return Moshi.Builder().build()
     }
 
-    fun <ApiImpl> provideApiImplementation(retrofit: Retrofit, apiClass: Class<ApiImpl>): ApiImpl {
+    fun <ApiImpl> provideApiImplementation(
+        retrofit: Retrofit,
+        apiClass: Class<ApiImpl>,
+    ): ApiImpl {
         return retrofit.create(apiClass)
     }
 }

@@ -8,7 +8,6 @@ import androidx.core.view.WindowCompat
 import com.tapptitude.template.ui.theme.AppTheme
 
 class HostActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)

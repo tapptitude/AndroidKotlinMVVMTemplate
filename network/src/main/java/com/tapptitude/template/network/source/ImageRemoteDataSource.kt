@@ -9,8 +9,8 @@ class ImageRemoteDataSource(
     private val dispatcherProvider: DispatcherProvider,
     private val imageApi: ImageApi,
 ) {
-
-    suspend fun getRandomImage(): ImageDto = withContext(dispatcherProvider.io) {
-        imageApi.getRandomImage()
-    }
+    suspend fun getRandomImage(): ImageDto =
+        withContext(dispatcherProvider.io) {
+            imageApi.getRandomImage()
+        }
 }

@@ -10,6 +10,5 @@ import com.tapptitude.template.persistence.images.ImagesDao
     version = 2,
 )
 internal abstract class LocalDatabase : RoomDatabase() {
-
     abstract val imagesDao: ImagesDao
 }

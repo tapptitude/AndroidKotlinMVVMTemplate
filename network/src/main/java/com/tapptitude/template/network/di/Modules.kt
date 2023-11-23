@@ -7,12 +7,13 @@ import com.tapptitude.template.network.source.ImageRemoteDataSource
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
-val networkModule = module {
-    factory { NetworkComponentsFactory.provideMoshi() }
-    factory { NetworkComponentsFactory.provideOkHttpClient(sessionInterceptor = get()) }
-    factory { NetworkComponentsFactory.provideRetrofit(okHttpClient = get(), moshi = get()) }
-    factory { NetworkComponentsFactory.provideApiImplementation(retrofit = get(), ImageApi::class.java) }
+val networkModule =
+    module {
+        factory { NetworkComponentsFactory.provideMoshi() }
+        factory { NetworkComponentsFactory.provideOkHttpClient(sessionInterceptor = get()) }
+        factory { NetworkComponentsFactory.provideRetrofit(okHttpClient = get(), moshi = get()) }
+        factory { NetworkComponentsFactory.provideApiImplementation(retrofit = get(), ImageApi::class.java) }
 
-    factoryOf(::SessionInterceptor)
-    factoryOf(::ImageRemoteDataSource)
-}
+        factoryOf(::SessionInterceptor)
+        factoryOf(::ImageRemoteDataSource)
+    }

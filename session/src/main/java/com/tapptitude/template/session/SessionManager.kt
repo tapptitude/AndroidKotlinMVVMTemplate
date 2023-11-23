@@ -6,6 +6,10 @@ import kotlinx.coroutines.flow.StateFlow
 interface SessionManager {
     val currentLoginStateFlow: StateFlow<LoginState>
 
-    fun onLoggedIn(accessToken: String, userId: String)
+    fun onLoggedIn(
+        accessToken: String,
+        userId: String,
+    )
+
     fun onLoggedOut(lastUserId: String?)
 }

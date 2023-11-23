@@ -21,7 +21,10 @@ internal class SessionManagerImpl(
         loadSavedLoginState()
     }
 
-    override fun onLoggedIn(accessToken: String, userId: String) {
+    override fun onLoggedIn(
+        accessToken: String,
+        userId: String,
+    ) {
         val loggedInState = LoggedIn(accessToken, userId)
         currentLoginStateFlow.value = loggedInState
 
