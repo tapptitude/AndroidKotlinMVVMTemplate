@@ -10,10 +10,9 @@ internal class SessionInterceptor(private val sessionManager: SessionManager) : 
         val currentLoginState = sessionManager.currentLoginStateFlow.value
 
         if (currentLoginState is LoggedIn) {
-            val newRequest =
-                chain.request().newBuilder()
-                    .addHeader(HEADER_AUTHORIZATION, currentLoginState.sessionToken)
-                    .build()
+            val newRequest = chain.request().newBuilder()
+                .addHeader(HEADER_AUTHORIZATION, currentLoginState.sessionToken)
+                .build()
 
             return chain.proceed(newRequest)
         }

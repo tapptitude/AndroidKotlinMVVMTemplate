@@ -17,6 +17,7 @@ class HomeViewModel(
     private val loadImageUseCase: LoadImageUseCase,
     private val sessionManager: SessionManager,
 ) : ViewModel() {
+
     private val _state = MutableStateFlow(HomeState(isLoading = false, loginState = LoggedOut(), image = null))
     val state: StateFlow<HomeState>
         get() = _state

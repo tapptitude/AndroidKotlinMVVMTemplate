@@ -6,6 +6,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 
 class SpotlessConventionPlugin : Plugin<Project> {
+
     override fun apply(target: Project) {
         target.configureSpotless()
     }

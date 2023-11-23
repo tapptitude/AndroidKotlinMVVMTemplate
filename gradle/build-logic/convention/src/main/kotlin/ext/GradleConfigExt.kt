@@ -14,7 +14,9 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-internal fun addBaseCommonConfig(commonExtension: CommonExtension<*, *, *, *, *>) {
+internal fun addBaseCommonConfig(
+    commonExtension: CommonExtension<*, *, *, *, *>,
+) {
     commonExtension.apply {
         compileSdk = COMPILE_SDK_VERSION
 
@@ -33,7 +35,9 @@ internal fun addBaseCommonConfig(commonExtension: CommonExtension<*, *, *, *, *>
     }
 }
 
-internal fun Project.addAndroidComposeConfig(commonExtension: CommonExtension<*, *, *, *, *>) {
+internal fun Project.addAndroidComposeConfig(
+    commonExtension: CommonExtension<*, *, *, *, *>,
+) {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
     commonExtension.apply {
@@ -53,18 +57,17 @@ internal fun Project.addAndroidComposeConfig(commonExtension: CommonExtension<*,
     }
 }
 
-internal fun CommonExtension<*, *, *, *, *>.addFlavors(): CommonExtension<*, *, *, *, *> =
-    apply {
-        flavorDimensions += API.title
+internal fun CommonExtension<*, *, *, *, *>.addFlavors(): CommonExtension<*, *, *, *, *> = apply {
+    flavorDimensions += API.title
 
-        productFlavors {
-            FlavorsEnum.values().forEach { flavorData ->
-                create(flavorData.flavorName) {
-                    dimension = flavorData.flavorDimension
-                }
+    productFlavors {
+        FlavorsEnum.values().forEach { flavorData ->
+            create(flavorData.flavorName) {
+                dimension = flavorData.flavorDimension
             }
         }
     }
+}
 
 internal fun CommonExtension<*, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)

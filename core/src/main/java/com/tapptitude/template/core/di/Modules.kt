@@ -7,8 +7,7 @@ import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
-val coreModule =
-    module {
-        factoryOf(::ImageRepositoryImpl) { bind<ImageRepository>() }
-        factoryOf(::LoadImageUseCase)
-    }
+val coreModule = module {
+    factoryOf(::ImageRepositoryImpl) { bind<ImageRepository>() }
+    factoryOf(::LoadImageUseCase)
+}

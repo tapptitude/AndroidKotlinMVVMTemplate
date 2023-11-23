@@ -58,10 +58,9 @@ internal fun HomeScreen(
 ) {
     if (!isLoading) {
         Column(
-            modifier =
-                modifier
-                    .fillMaxWidth()
-                    .padding(24.dp),
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(24.dp),
         ) {
             Text(
                 text = stringResource(R.string.title_including_flavor_format, BuildConfig.FLAVOR),
@@ -78,19 +77,17 @@ internal fun HomeScreen(
                 onClick = onButtonClick,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             ) {
-                val btnStringId =
-                    when (loginState) {
-                        is LoggedIn -> R.string.action_logout
-                        is LoggedOut -> R.string.action_login
-                    }
+                val btnStringId = when (loginState) {
+                    is LoggedIn -> R.string.action_logout
+                    is LoggedOut -> R.string.action_login
+                }
                 Text(text = stringResource(btnStringId))
             }
             Spacer(modifier = Modifier.size(16.dp))
-            val loginStatus =
-                when (loginState) {
-                    is LoggedIn -> stringResource(R.string.status_logged_in_x, loginState.userId)
-                    is LoggedOut -> stringResource(R.string.status_logged_out)
-                }
+            val loginStatus = when (loginState) {
+                is LoggedIn -> stringResource(R.string.status_logged_in_x, loginState.userId)
+                is LoggedOut -> stringResource(R.string.status_logged_out)
+            }
             Text(
                 text = loginStatus,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -99,14 +96,12 @@ internal fun HomeScreen(
     }
     AnimatedVisibility(
         visible = isLoading,
-        enter =
-            slideInVertically(
-                initialOffsetY = { fullHeight -> -fullHeight },
-            ) + fadeIn(),
-        exit =
-            slideOutVertically(
-                targetOffsetY = { fullHeight -> -fullHeight },
-            ) + fadeOut(),
+        enter = slideInVertically(
+            initialOffsetY = { fullHeight -> -fullHeight },
+        ) + fadeIn(),
+        exit = slideOutVertically(
+            targetOffsetY = { fullHeight -> -fullHeight },
+        ) + fadeOut(),
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

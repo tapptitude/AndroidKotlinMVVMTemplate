@@ -5,49 +5,32 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.tapptitude.template.crashlytics.Crashlytics
 
 class CrashlyticsFirebase : Crashlytics {
+
     override fun addLog(message: String) {
         FirebaseCrashlytics.getInstance().log(message)
     }
 
-    override fun setKey(
-        key: String,
-        value: String,
-    ) {
+    override fun setKey(key: String, value: String) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 
-    override fun setKey(
-        key: String,
-        value: Float,
-    ) {
+    override fun setKey(key: String, value: Float) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 
-    override fun setKey(
-        key: String,
-        value: Double,
-    ) {
+    override fun setKey(key: String, value: Double) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 
-    override fun setKey(
-        key: String,
-        value: Boolean,
-    ) {
+    override fun setKey(key: String, value: Boolean) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 
-    override fun setKey(
-        key: String,
-        value: Int,
-    ) {
+    override fun setKey(key: String, value: Int) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 
-    override fun setKey(
-        key: String,
-        value: Long,
-    ) {
+    override fun setKey(key: String, value: Long) {
         FirebaseCrashlytics.getInstance().setCustomKey(key, value)
     }
 

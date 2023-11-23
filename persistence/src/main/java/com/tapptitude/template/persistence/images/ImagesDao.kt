@@ -8,6 +8,7 @@ import androidx.room.Transaction
 
 @Dao
 interface ImagesDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(image: ImageEntity)
 

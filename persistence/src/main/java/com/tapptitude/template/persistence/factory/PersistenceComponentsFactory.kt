@@ -7,6 +7,7 @@ import com.tapptitude.template.persistence.factory.DatabaseMigrationsFactory.per
 import com.tapptitude.template.persistence.images.ImagesDao
 
 internal object PersistenceComponentsFactory {
+
     private const val DATABASE_NAME = "LocalStore.db"
 
     fun provideDatabase(application: Application): LocalDatabase =
