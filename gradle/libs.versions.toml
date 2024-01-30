@@ -1,37 +1,42 @@
 [versions]
-androidGradlePlugin = "8.2.0"
+androidGradlePlugin = "8.2.2"
 androidxActivity = "1.8.2"
 androidxAppCompat = "1.6.1"
-androidxComposeBom = "2023.10.01"
-androidxComposeCompiler = "1.5.7"
+androidxComposeBom = "2024.01.00"
+androidxComposeCompiler = "1.5.8"
 androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.1"
 androidxDataStore = "1.0.0"
 androidxEspresso = "3.5.1"
-androidxLifecycle = "2.6.2"
+androidxLifecycle = "2.7.0"
 androidxNavigation = "2.7.6"
 androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.5"
 androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.2"
 coil = "2.5.0"
-composeLintChecks = "1.2.0"
+composeLintChecks = "1.3.1"
 detekt = "1.23.4"
-firebaseBom = "32.7.0"
+firebaseBom = "32.7.1"
 firebaseGradle = "2.9.9"
 googleServices = "4.4.0"
 junit4 = "4.13.2"
 koin = "3.5.3"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 kotlinxCoroutines = "1.7.3"
-ksp = "1.9.21-1.0.16"
+ksp = "1.9.22-1.0.17"
 ktlint = "1.0.1"
 moshi = "1.15.0"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 room = "2.6.1"
-spotless = "6.23.3"
+spotless = "6.25.0"
 timber = "5.0.1"
+versions = "0.51.0"
+
+#to be removed after it becomes part of compose BOM, right now compose BOM implements an older version that is not compatible with the latest
+#compose changes ¯\_(ツ)_/¯
+material3 = "1.2.0-rc01"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
@@ -39,7 +44,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
@@ -97,6 +102,6 @@ firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
